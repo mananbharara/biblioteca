@@ -14,33 +14,34 @@ public class Book {
     private int numberOfCopies;
     private int numberIssued;
 
-    private boolean isAvailable(){
+    boolean isAvailable(){
         if(numberOfCopies-numberIssued>0){
             return true;
         }
         return false;
     }
 
-    public Book(String bName, String bAuthor, int bCopies, int bIssued) {
+    public Book(String bName, String bAuthor, int bCopies) {
         name=bName;
         author=bAuthor;
         numberOfCopies=bCopies;
-        numberIssued=bIssued;
+        numberIssued=0;
 
     }
 
     String getInfo(){
         return(name+" by "+author);
     }
-
-
-
-    boolean issueBook(){
+    boolean decreaseCount(){
         if(isAvailable()){
-        --numberOfCopies;
+        ++numberIssued;
         return true;
         }
         return false;
+    }
+
+    void setIssued(int bIssued){
+        numberIssued=bIssued;
     }
 }
 

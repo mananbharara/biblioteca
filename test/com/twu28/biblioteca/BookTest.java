@@ -13,15 +13,25 @@ import static org.junit.Assert.*;
  */
 public class BookTest {
 
-    @Test() public void bookInfoIsCorrect() throws Exception{
+    @Test public void bookInfoIsCorrect() throws Exception{
 
-        assertEquals("Game Of Thrones by R.R. Martin",new Book("Game Of Thrones","R.R. Martin",20,2).getInfo());
+        assertEquals("Game Of Thrones by R.R. Martin",new Book("Game Of Thrones","R.R. Martin",20).getInfo());
     }
 
-    @Test() public void onlyAvailableBooksAreIssued(){
-        Book testBook=new Book("The Godfather","Mario Puzo",15,14);
-        assertTrue(testBook.issueBook());
-        assertFalse(testBook.issueBook());
+    @Test public void checkBookAvailability() throws Exception{
+        Book testBook=new Book("The Godfather","Mario Puzo",15);
+        testBook.setIssued(14);
+        assertTrue(testBook.isAvailable());
+        testBook.setIssued(15);
+        assertFalse(testBook.isAvailable());
+    }
+
+    @Test public void checkBookCountDecrement() throws Exception{
+
+        Book testBook=new Book("The Confession","John Grisham",5);
+        testBook.setIssued(4);
+        assertTrue(testBook.decreaseCount());
+        assertFalse(testBook.decreaseCount());
     }
 }
 
