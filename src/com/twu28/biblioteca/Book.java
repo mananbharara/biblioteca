@@ -14,6 +14,13 @@ public class Book {
     private int numberOfCopies;
     private int numberIssued;
 
+    private boolean isAvailable(){
+        if(numberOfCopies-numberIssued>0){
+            return true;
+        }
+        return false;
+    }
+
     public Book(String bName, String bAuthor, int bCopies, int bIssued) {
         name=bName;
         author=bAuthor;
@@ -24,6 +31,16 @@ public class Book {
 
     String getInfo(){
         return(name+" by "+author);
+    }
+
+
+
+    boolean issueBook(){
+        if(isAvailable()){
+        --numberOfCopies;
+        return true;
+        }
+        return false;
     }
 }
 
