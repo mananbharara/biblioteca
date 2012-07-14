@@ -20,6 +20,14 @@ public class Library {
     }
 
     public String welcomeDisplay() {
-        return null;  //To change body of created methods use File | Settings | File Templates.
+        return "Welcome to Biblioteca\n";  //To change body of created methods use File | Settings | File Templates.
+    }
+
+    public String menuDisplay() {
+        return("Please choose from the following options: \n\n1. View All Books\n2. Reserve a Book\n3. Exit\n\nEnter your choice(V,R or E): ");
+    }
+
+    public boolean getCustomerChoice(char choice) {
+        return false;  //To change body of created methods use File | Settings | File Templates.
     }
 }

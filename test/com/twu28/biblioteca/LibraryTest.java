@@ -13,7 +13,16 @@ import static org.junit.Assert.*;
  */
 public class LibraryTest {
 
-    @Test public void welcomeScreen(){
+    @Test public void customerIsWelcomed(){
         assertEquals("Welcome to Biblioteca\n",new Library().welcomeDisplay());
+
+    }
+
+    @Test public void invalidMessageWhenCustomerChoiceIsIncorrect(){
+        assertFalse(new Library().getCustomerChoice('X'));
+    }
+
+    @Test public void trueIfCustomerChoiceIsCorrect(){
+        assertTrue(new Library().getCustomerChoice('V'));
     }
 }
