@@ -1,5 +1,7 @@
 package com.twu28.biblioteca;
 
+import java.util.Scanner;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Manan
@@ -24,6 +26,20 @@ public class CustomerPrompt {
     }
 
     public String performActionSelected(char choice) {
-        return null;  //To change body of created methods use File | Settings | File Templates.
+        switch (choice){
+            case 'V':
+                biblioteca.displayAllBooks();
+                break;
+            case 'R':
+                biblioteca.displayAllBooks();
+                System.out.print("Enter Book Id of the Book to reserve: ");
+                Scanner sc=new Scanner(System.in);
+                biblioteca.reserveBook(sc.nextLine());
+                break;
+            case 'E':
+                System.exit(0);
+
+        }
+        return "Select a valid option!!";  //To change body of created methods use File | Settings | File Templates.
     }
 }
