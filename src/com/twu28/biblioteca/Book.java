@@ -1,5 +1,7 @@
 package com.twu28.biblioteca;
 
+import java.util.Random;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Manan
@@ -12,7 +14,8 @@ public class Book {
     private String name;
     private String author;
     private int numberOfCopies;
-    private int numberIssued;
+    int numberIssued;
+
 
     boolean isAvailable(){
         if(numberOfCopies-numberIssued>0){
@@ -26,8 +29,7 @@ public class Book {
         author=bAuthor;
         numberOfCopies=bCopies;
         numberIssued=0;
-
-    }
+        }
 
     String getInfo(){
         return(name+" by "+author);
@@ -40,8 +42,6 @@ public class Book {
         return false;
     }
 
-    void setIssued(int bIssued){
-        numberIssued=bIssued;
-    }
+
 }
 

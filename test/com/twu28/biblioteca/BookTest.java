@@ -19,7 +19,7 @@ public class BookTest {
     }
 
     @Test public void checkBookAvailability() throws Exception{
-        Book testBook=new Book("The Godfather","Mario Puzo",15);
+        BookStub testBook=new BookStub("TG001","The Godfather","Mario Puzo",15);
         testBook.setIssued(14);
         assertTrue(testBook.isAvailable());
         testBook.setIssued(15);
@@ -28,7 +28,7 @@ public class BookTest {
 
     @Test public void checkBookCountDecrement() throws Exception{
 
-        Book testBook=new Book("The Confession","John Grisham",5);
+        BookStub testBook=new BookStub("TC001","The Confession","John Grisham",5);
         testBook.setIssued(4);
         assertTrue(testBook.decreaseCount());
         assertFalse(testBook.decreaseCount());
