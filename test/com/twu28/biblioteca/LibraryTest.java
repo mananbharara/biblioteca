@@ -23,11 +23,7 @@ public class LibraryTest {
     bookArray[3]=new BookStub("TC001","The Confession","John Grisham",5);
     bookArray[4]=new BookStub("B001","Brida","Paolo Coelho",5);
     }
-    @Test public void customerIsWelcomed(){
-        initialize();
-        assertEquals("Welcome to Biblioteca\n",new Library(bookArray).welcomeDisplay());
 
-    }
 
     /*@Test public void invalidMessageWhenCustomerChoiceIsIncorrect(){
         assertFalse(new Library().getCustomerChoice('X'));
