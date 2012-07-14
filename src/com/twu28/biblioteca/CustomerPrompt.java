@@ -14,29 +14,39 @@ public class CustomerPrompt {
     Library biblioteca;
 
    public CustomerPrompt(Library lib){
+       char ch='y';
        biblioteca=lib;
+       welcomeDisplay();
+       do{
+            menuDisplay();
+            Scanner sc=new Scanner(System.in);
+            System.out.println(performActionSelected(sc.next().charAt(0)));
+            System.out.println("Would you like to return to menu: ");
+            ch=sc.next().charAt(0);
+       }while (ch=='y'||ch=='Y');
    }
 
     public String welcomeDisplay() {
         return "Welcome to Biblioteca\n";  //To change body of created methods use File | Settings | File Templates.
     }
 
-    public String menuDisplay() {
-        return("Please choose from the following options: \n\n1. View All Books\n2. Reserve a Book\n3. Exit\n\nEnter your choice(V,R or E): ");
+    public void menuDisplay() {
+        System.out.println("Please choose from the following options: \n\nView All Books\nReserve a Book\nExit\n\nEnter your choice(V,R or E): ");
     }
 
     public String performActionSelected(char choice) {
         switch (choice){
             case 'V':
-                biblioteca.displayAllBooks();
-                break;
+                return (biblioteca.displayAllBooks());
+
             case 'R':
-                biblioteca.displayAllBooks();
+                System.out.print(biblioteca.displayAllBooks());
                 System.out.print("Enter Book Id of the Book to reserve: ");
                 Scanner sc=new Scanner(System.in);
-                biblioteca.reserveBook(sc.nextLine());
-                break;
+                return biblioteca.reserveBook(sc.nextLine());
+
             case 'E':
+                System.out.println("Goodbye, Visit Again");
                 System.exit(0);
 
         }

@@ -50,7 +50,7 @@ public class Library {
     public String displayAllBooks() {
         StringBuffer allBookInfo=new StringBuffer("");
         for(int i=0;i<bookArray.length;++i){
-             allBookInfo.append(bookArray[i].getInfo()+" "+bookArray[i].getId()+"\n");
+             allBookInfo.append(bookArray[i].getId()+" - "+bookArray[i].getInfo()+"\n");
         }
         return (allBookInfo.toString());
     }

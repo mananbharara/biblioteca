@@ -62,7 +62,7 @@ public class LibraryTest {
     @Test public void singleAvailableBookIsDisplayed(){
             bookArray=new BookStub[1];
             bookArray[0]=new BookStub("TG002","The girl with the dragon tattoo","Stieg Larrson",5);
-            assertEquals("The girl with the dragon tattoo by Stieg Larrson TG002\n",new Library(bookArray).displayAllBooks());
+            assertEquals("TG002 - The girl with the dragon tattoo by Stieg Larrson\n",new Library(bookArray).displayAllBooks());
     }
 
 
