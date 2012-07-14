@@ -65,5 +65,12 @@ public class LibraryTest {
             assertEquals("TG002 - The girl with the dragon tattoo by Stieg Larrson\n",new Library(bookArray).displayAllBooks());
     }
 
+    @Test public void notificationOnCheckLibraryNumber(){
+        initialize();
+        {
+            assertEquals("Please talk to Librarian. Thank you.",new Library(bookArray).checkLibraryNumber());
+        }
+    }
+
 
 }

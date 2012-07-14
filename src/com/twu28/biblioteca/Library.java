@@ -54,4 +54,8 @@ public class Library {
         }
         return (allBookInfo.toString());
     }
+
+    public String checkLibraryNumber() {
+        return "Please talk to Librarian. Thank you.";
+    }
 }

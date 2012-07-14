@@ -19,5 +19,6 @@ public class RunAtConsole {
             bookArray[4]=new Book("B001","Brida","Paolo Coelho",5);
         Library lib=new Library(bookArray);
         CustomerPrompt bibliotecaCI=new CustomerPrompt(lib);
+        bibliotecaCI.menuDisplay();
     }
 }

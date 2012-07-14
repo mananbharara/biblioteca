@@ -14,16 +14,10 @@ public class CustomerPrompt {
     Library biblioteca;
 
    public CustomerPrompt(Library lib){
-       char ch='y';
+
        biblioteca=lib;
        welcomeDisplay();
-       do{
-            menuDisplay();
-            Scanner sc=new Scanner(System.in);
-            System.out.println(performActionSelected(sc.next().charAt(0)));
-            System.out.println("Would you like to return to menu: ");
-            ch=sc.next().charAt(0);
-       }while (ch=='y'||ch=='Y');
+
    }
 
     public String welcomeDisplay() {
@@ -31,7 +25,15 @@ public class CustomerPrompt {
     }
 
     public void menuDisplay() {
-        System.out.println("Please choose from the following options: \n\nView All Books\nReserve a Book\nExit\n\nEnter your choice(V,R or E): ");
+        char ch='y';
+        do{
+            System.out.println("Please choose from the following options: \n\nView All Books\nReserve a Book\nCheck your Library Number\nExit\n\nEnter your choice(V,R,C or E): ");
+            Scanner sc=new Scanner(System.in);
+            System.out.println(performActionSelected(sc.next().charAt(0)));
+
+            System.out.println("Would you like to return to menu: ");
+            ch=sc.next().charAt(0);
+        }while (ch=='y'||ch=='Y');
     }
 
     public String performActionSelected(char choice) {
@@ -48,7 +50,8 @@ public class CustomerPrompt {
             case 'E':
                 System.out.println("Goodbye, Visit Again");
                 System.exit(0);
-
+            case 'C':
+                return biblioteca.checkLibraryNumber();
         }
         return "Select a valid option!!";  //To change body of created methods use File | Settings | File Templates.
     }
