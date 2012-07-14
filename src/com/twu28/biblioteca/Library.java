@@ -36,20 +36,26 @@ public class Library {
         return false;  //To change body of created methods use File | Settings | File Templates.
     }*/
 
-    private void displayAllBooks() {
-
-    }
 
 
-    public boolean reserveBook(String bId) {
+
+    public String reserveBook(String bId) {
 
         for(int i=0;i<bookArray.length;++i){
             if((bookArray[i].getId()).equals(bId)){
-                return bookArray[i].decreaseCount();
+                if(bookArray[i].decreaseCount()){
+                    return "Thank You! Enjoy the book.";
+                }
+                else{
+                    return "Sorry, all books of this series have been reserved";
+                }
             }
         }
+             return "Sorry we don't have that book yet.";
 
-             return false;
+    }
 
+    public String displayAllBooks() {
+        return null;  //To change body of created methods use File | Settings | File Templates.
     }
 }

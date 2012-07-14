@@ -48,13 +48,25 @@ public class LibraryTest {
     @Test public void availableBookIsReserved(){
         initialize();
         Library lib=new Library(bookArray);
-               assertTrue(lib.reserveBook("TG001"));
+               assertEquals("Thank You! Enjoy the book.", lib.reserveBook("TG001"));
+               assertEquals("Sorry, all books of this series have been reserved",lib.reserveBook("TG001"));  //Because now TG001 books are out of Stock
     }
 
-    @Test public void unavailableBookIsNotReserved(){
+    @Test public void outOfStockBookIsNotReserved(){
                 initialize();
                bookArray[3].setIssued(5);
-               assertFalse(new Library(bookArray).reserveBook("TC001"));
+               assertEquals("Sorry, all books of this series have been reserved", new Library(bookArray).reserveBook("TC001"));
+    }
+
+    @Test public void unavailableBooksAreNotReserved(){
+            initialize();
+            assertEquals("Sorry we don't have that book yet.",new Library(bookArray).reserveBook("AB001"));
+    }
+
+    @Test public void singleAvailableBookIsDisplayed(){
+
+            bookArray[0]=new BookStub("TG002","The Girl with The Dragon Tattoo","Stieg Larrson",5);
+            assertEquals("The girl with the dragon tattoo by Stieg Larrson TG002",new Library(bookArray).displayAllBooks());
     }
 
 
