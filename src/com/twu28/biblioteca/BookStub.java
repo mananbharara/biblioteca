@@ -8,10 +8,10 @@ package com.twu28.biblioteca;
  * To change this template use File | Settings | File Templates.
  */
 public class BookStub extends Book {
-    String id;
+
     public BookStub(String bId, String bName, String bAuthor, int bCopies) {
-        super(bName, bAuthor, bCopies);
-        id=bId;
+        super(bId,bName, bAuthor, bCopies);
+
     }
 
     void setIssued(int bIssued){

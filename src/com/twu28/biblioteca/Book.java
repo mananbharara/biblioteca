@@ -15,7 +15,7 @@ public class Book {
     private String author;
     private int numberOfCopies;
     int numberIssued;
-
+    private String id;
 
     boolean isAvailable(){
         if(numberOfCopies-numberIssued>0){
@@ -24,15 +24,20 @@ public class Book {
         return false;
     }
 
-    public Book(String bName, String bAuthor, int bCopies) {
+    public Book(String bId, String bName, String bAuthor, int bCopies) {
         name=bName;
         author=bAuthor;
         numberOfCopies=bCopies;
         numberIssued=0;
+        id=bId;
         }
 
     String getInfo(){
         return(name+" by "+author);
+    }
+
+    String getId(){
+        return id;
     }
     boolean decreaseCount(){
         if(isAvailable()){

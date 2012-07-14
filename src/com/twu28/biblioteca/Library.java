@@ -12,7 +12,7 @@ public class Library {
     Book bookArray[];
     Library(Book bArray[]){
 
-        bookArray=bArray;
+                 bookArray=bArray;
     }
 
     public String welcomeDisplay() {
@@ -41,8 +41,15 @@ public class Library {
     }
 
 
-    public boolean reserveBook(String tg001) {
+    public boolean reserveBook(String bId) {
 
-        return true;  //To change body of created methods use File | Settings | File Templates.
+        for(int i=0;i<bookArray.length;++i){
+            if((bookArray[i].getId()).equals(bId)){
+                return bookArray[i].decreaseCount();
+            }
+        }
+
+             return false;
+
     }
 }

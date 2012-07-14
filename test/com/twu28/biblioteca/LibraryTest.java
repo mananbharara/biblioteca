@@ -20,7 +20,7 @@ public class LibraryTest {
     bookArray[0]=new BookStub("SH001","Sherlock Holmes","Ser Arthur Conan Doyle",5);
     bookArray[1]=new BookStub("DP001","Deception Point","Dan Brown",10);
     bookArray[2]=new BookStub("TG001","The Godfather","Mario Puzo",1);
-    bookArray[3]=new BookStub("TC001","The Confession","John Grisham",0);
+    bookArray[3]=new BookStub("TC001","The Confession","John Grisham",5);
     bookArray[4]=new BookStub("B001","Brida","Paolo Coelho",5);
     }
     @Test public void customerIsWelcomed(){
@@ -46,11 +46,14 @@ public class LibraryTest {
     }   */
 
     @Test public void availableBookIsReserved(){
-
-               assertTrue(new Library(bookArray).reserveBook("TG001"));
+        initialize();
+        Library lib=new Library(bookArray);
+               assertTrue(lib.reserveBook("TG001"));
     }
 
     @Test public void unavailableBookIsNotReserved(){
+                initialize();
+               bookArray[3].setIssued(5);
                assertFalse(new Library(bookArray).reserveBook("TC001"));
     }
 
