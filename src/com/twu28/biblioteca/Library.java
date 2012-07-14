@@ -56,6 +56,10 @@ public class Library {
     }
 
     public String displayAllBooks() {
-        return null;  //To change body of created methods use File | Settings | File Templates.
+        StringBuffer allBookInfo=new StringBuffer("");
+        for(int i=0;i<bookArray.length;++i){
+             allBookInfo.append(bookArray[i].getInfo()+" "+bookArray[i].getId()+"\n");
+        }
+        return (allBookInfo.toString());
     }
 }

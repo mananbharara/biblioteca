@@ -10,7 +10,7 @@ package com.twu28.biblioteca;
 public class BookStub extends Book {
 
     public BookStub(String bId, String bName, String bAuthor, int bCopies) {
-        super(bId,bName, bAuthor, bCopies);
+        super(bId, bName, bAuthor, bCopies);
 
     }
 
