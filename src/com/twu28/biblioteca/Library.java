@@ -42,6 +42,7 @@ public class Library {
 
 
     public boolean reserveBook(String tg001) {
-        return false;  //To change body of created methods use File | Settings | File Templates.
+
+        return true;  //To change body of created methods use File | Settings | File Templates.
     }
 }
