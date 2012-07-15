@@ -9,6 +9,10 @@ import java.util.Scanner;
  * Time: 6:26 PM
  * To change this template use File | Settings | File Templates.
  */
+
+/*
+Handling all the I/O operations
+ */
 public class CustomerPrompt {
 
     Library biblioteca;
@@ -20,10 +24,12 @@ public class CustomerPrompt {
 
    }
 
+    //To display Welcome Screen
     public String welcomeDisplay() {
-        return "Welcome to Biblioteca\n";  //To change body of created methods use File | Settings | File Templates.
+        return "Welcome to Biblioteca\n";
     }
 
+    //To display a menu to customer to choose from.
     public void menuDisplay() {
         char ch='y';
         do{
@@ -36,6 +42,7 @@ public class CustomerPrompt {
         }while (ch=='y'||ch=='Y');
     }
 
+    //To handle customer input and perform selected operation
     public String performActionSelected(char choice) {
         switch (choice){
             case 'V':
@@ -53,6 +60,6 @@ public class CustomerPrompt {
             case 'C':
                 return biblioteca.checkLibraryNumber();
         }
-        return "Select a valid option!!";  //To change body of created methods use File | Settings | File Templates.
+        return "Select a valid option!!";
     }
 }

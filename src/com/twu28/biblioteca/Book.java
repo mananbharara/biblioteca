@@ -17,13 +17,6 @@ public class Book {
     int numberIssued;
     private String id;
 
-    boolean isAvailable(){
-        if(numberOfCopies-numberIssued>0){
-            return true;
-        }
-        return false;
-    }
-
     public Book(String bId, String bName, String bAuthor, int bCopies) {
         name=bName;
         author=bAuthor;
@@ -32,13 +25,25 @@ public class Book {
         id=bId;
         }
 
+    //To check if a book is available
+    boolean isAvailable(){
+        if(numberOfCopies-numberIssued>0){
+            return true;
+        }
+        return false;
+    }
+
+    //To return book info
     String getInfo(){
         return(name+" by "+author);
     }
 
+    //To return book id
     String getId(){
         return id;
     }
+
+    //To decrease the available book count and increase the issued book count
     boolean decreaseCount(){
         if(isAvailable()){
         ++numberIssued;

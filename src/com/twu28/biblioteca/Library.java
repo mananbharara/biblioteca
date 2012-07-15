@@ -7,6 +7,8 @@ package com.twu28.biblioteca;
  * Time: 11:07 PM
  * To change this template use File | Settings | File Templates.
  */
+
+
 public class Library {
 
     Book bookArray[];
@@ -15,23 +17,8 @@ public class Library {
                  bookArray=bArray;
     }
 
-    /*public boolean getCustomerChoice(char choice) {
-        switch (choice){
-            case 'V':
-                displayAllBooks();
-                return true;
-            case 'R':
-                return true;
-            case 'E':
-                return true;
-        }
-        return false;  //To change body of created methods use File | Settings | File Templates.
-    }*/
-
-
-
-
-    public String reserveBook(String bId) {
+   //To Reserve a book with Book Id bId
+   public String reserveBook(String bId) {
 
         for(int i=0;i<bookArray.length;++i){
             if((bookArray[i].getId()).equals(bId)){
@@ -47,6 +34,7 @@ public class Library {
 
     }
 
+    //To Display a list of all books available with the Library
     public String displayAllBooks() {
         StringBuffer allBookInfo=new StringBuffer("");
         for(int i=0;i<bookArray.length;++i){
@@ -55,6 +43,7 @@ public class Library {
         return (allBookInfo.toString());
     }
 
+    //To allow the checking of a library number and notify
     public String checkLibraryNumber() {
         return "Please talk to Librarian. Thank you.";
     }
