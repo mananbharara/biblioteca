@@ -18,19 +18,19 @@ public class Library {
     }
 
    //To Reserve a book with Book Id bId
-   public String reserveBook(String bId) {
+   public boolean reserveBook(String bId) {
 
         for(int i=0;i< book.length;++i){
             if((book[i].getId()).equals(bId)){
                 if(book[i].decreaseCount()){
-                    return "Thank You! Enjoy the book.";
+                    return true;
                 }
                 else{
-                    return "Sorry, all books of this series have been reserved";
+                    return false;
                 }
             }
         }
-             return "Sorry we don't have that book yet.";
+             return false;
 
     }
 

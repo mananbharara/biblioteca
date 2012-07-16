@@ -35,7 +35,7 @@ public class CustomerPrompt {
         do{
             System.out.println("Please choose from the following options: \n\nView All Books\nReserve a Book\nCheck your Library Number\nExit\n\nEnter your choice(V,R,C or E): ");
             Scanner sc=new Scanner(System.in);
-            System.out.println(performActionSelected(sc.next().charAt(0)));
+            System.out.println(getResultsForOptionSelected(sc.next().charAt(0)));
 
             System.out.println("Would you like to return to menu: ");
             ch=sc.next().charAt(0);
@@ -43,7 +43,7 @@ public class CustomerPrompt {
     }
 
     //To handle customer input and perform selected operation
-    public String performActionSelected(char choice) {
+    public String getResultsForOptionSelected(char choice) {
         switch (choice){
             case 'V':
                 return (biblioteca.displayAllBooks());
@@ -52,7 +52,10 @@ public class CustomerPrompt {
                 System.out.print(biblioteca.displayAllBooks());
                 System.out.print("Enter Book Id of the Book to reserve: ");
                 Scanner sc=new Scanner(System.in);
-                return biblioteca.reserveBook(sc.nextLine());
+                if(biblioteca.reserveBook(sc.nextLine())){
+                           return "Thank You! Enjoy the book.";
+                }
+                return "Sorry we don't have that book yet.";
 
             case 'E':
                 System.out.println("Goodbye, Visit Again");
