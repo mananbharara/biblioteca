@@ -11,18 +11,18 @@ package com.twu28.biblioteca;
 
 public class Library {
 
-    Book bookArray[];
+    Book book[];                       //To store the books available in the library
     Library(Book bArray[]){
 
-                 bookArray=bArray;
+                 book =bArray;
     }
 
    //To Reserve a book with Book Id bId
    public String reserveBook(String bId) {
 
-        for(int i=0;i<bookArray.length;++i){
-            if((bookArray[i].getId()).equals(bId)){
-                if(bookArray[i].decreaseCount()){
+        for(int i=0;i< book.length;++i){
+            if((book[i].getId()).equals(bId)){
+                if(book[i].decreaseCount()){
                     return "Thank You! Enjoy the book.";
                 }
                 else{
@@ -37,8 +37,8 @@ public class Library {
     //To Display a list of all books available with the Library
     public String displayAllBooks() {
         StringBuffer allBookInfo=new StringBuffer("");
-        for(int i=0;i<bookArray.length;++i){
-             allBookInfo.append(bookArray[i].getId()+" - "+bookArray[i].getInfo()+"\n");
+        for(int i=0;i< book.length;++i){
+             allBookInfo.append(book[i].getId()+" - "+ book[i].getInfo()+"\n");
         }
         return (allBookInfo.toString());
     }

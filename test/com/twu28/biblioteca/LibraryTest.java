@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
  */
 public class LibraryTest {
 
-    Book book[];
+    Book book[];                           //To store a collection of books
 
     //To store 5 sample books in library
     public void initialize(){
