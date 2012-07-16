@@ -13,15 +13,16 @@ import static org.junit.Assert.*;
  */
 public class LibraryTest {
 
-    BookStub bookArray[];
+    Book book[];
 
+    //To store 5 sample books in library
     public void initialize(){
-    bookArray=new BookStub[5];
-    bookArray[0]=new BookStub("SH001","Sherlock Holmes","Ser Arthur Conan Doyle",5);
-    bookArray[1]=new BookStub("DP001","Deception Point","Dan Brown",10);
-    bookArray[2]=new BookStub("TG001","The Godfather","Mario Puzo",1);
-    bookArray[3]=new BookStub("TC001","The Confession","John Grisham",5);
-    bookArray[4]=new BookStub("B001","Brida","Paolo Coelho",5);
+    book=new Book[5];
+    book[0]=new Book("SH001","Sherlock Holmes","Ser Arthur Conan Doyle",5);
+    book[1]=new Book("DP001","Deception Point","Dan Brown",10);
+    book[2]=new Book("TG001","The Godfather","Mario Puzo",0);
+    book[3]=new Book("TC001","The Confession","John Grisham",5);
+    book[4]=new Book("B001","Brida","Paolo Coelho",5);
     }
 
 
@@ -41,34 +42,35 @@ public class LibraryTest {
         assertTrue(new Library().getCustomerChoice('E'));
     }   */
 
+    //
     @Test public void availableBookIsReserved(){
         initialize();
-        Library lib=new Library(bookArray);
-               assertEquals("Thank You! Enjoy the book.", lib.reserveBook("TG001"));
-               assertEquals("Sorry, all books of this series have been reserved",lib.reserveBook("TG001"));  //Because now TG001 books are out of Stock
+        Library lib=new Library(book);
+               assertEquals("Thank You! Enjoy the book.", lib.reserveBook("TC001"));
+
     }
 
     @Test public void outOfStockBookIsNotReserved(){
                 initialize();
-               bookArray[3].setIssued(5);
-               assertEquals("Sorry, all books of this series have been reserved", new Library(bookArray).reserveBook("TC001"));
+
+                assertEquals("Sorry, all books of this series have been reserved", new Library(book).reserveBook("TG001"));
     }
 
     @Test public void unavailableBooksAreNotReserved(){
             initialize();
-            assertEquals("Sorry we don't have that book yet.",new Library(bookArray).reserveBook("AB001"));
+            assertEquals("Sorry we don't have that book yet.",new Library(book).reserveBook("AB001"));
     }
 
     @Test public void singleAvailableBookIsDisplayed(){
-            bookArray=new BookStub[1];
-            bookArray[0]=new BookStub("TG002","The girl with the dragon tattoo","Stieg Larrson",5);
-            assertEquals("TG002 - The girl with the dragon tattoo by Stieg Larrson\n",new Library(bookArray).displayAllBooks());
+            book=new Book[1];
+            book[0]=new Book("TG002","The girl with the dragon tattoo","Stieg Larrson",5);         //To store only one book in Library
+            assertEquals("TG002 - The girl with the dragon tattoo by Stieg Larrson\n",new Library(book).displayAllBooks());
     }
 
     @Test public void notificationOnCheckLibraryNumber(){
         initialize();
         {
-            assertEquals("Please talk to Librarian. Thank you.",new Library(bookArray).checkLibraryNumber());
+            assertEquals("Please talk to Librarian. Thank you.",new Library(book).checkLibraryNumber());
         }
     }
 

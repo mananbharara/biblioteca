@@ -15,22 +15,27 @@ public class BookTest {
 
     @Test public void bookInfoIsCorrect() throws Exception{
 
-        assertEquals("Game Of Thrones by R.R. Martin",new BookStub("GT001","Game Of Thrones","R.R. Martin",20).getInfo());
+        assertEquals("Game Of Thrones by R.R. Martin",new Book("GT001","Game Of Thrones","R.R. Martin",20).getInfo());
     }
 
-    @Test public void checkBookAvailability() throws Exception{
-        BookStub testBook=new BookStub("TG001","The Godfather","Mario Puzo",15);
-        testBook.setIssued(14);
+    @Test public void getTrueIfBookIsAvailable() throws Exception{
+        Book testBook=new Book("TG001","The Godfather","Mario Puzo",15);
         assertTrue(testBook.isAvailable());
-        testBook.setIssued(15);
+    }
+
+    @Test public void getFalseIfBookNotAvailable()throws Exception{
+        Book testBook=new Book("TG001","The Godfather","Mario Puzo",0);          //To initialize with Zero copies- so not available
         assertFalse(testBook.isAvailable());
     }
 
-    @Test public void checkBookCountDecrement() throws Exception{
+    @Test public void canReserveIfBookAvailable() throws Exception{
 
-        BookStub testBook=new BookStub("TC001","The Confession","John Grisham",5);
-        testBook.setIssued(4);
+        Book testBook=new Book("TC001","The Confession","John Grisham",5);
         assertTrue(testBook.decreaseCount());
+    }
+
+    @Test public void cannotReserveIfBookNotAvailable() throws Exception{
+        Book testBook=new Book("TC001","The Confession","John Grisham",0);
         assertFalse(testBook.decreaseCount());
     }
 }
