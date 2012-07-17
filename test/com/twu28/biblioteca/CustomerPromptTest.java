@@ -18,6 +18,15 @@ import static org.junit.Assert.*;
  */
 public class CustomerPromptTest {
 
+    public PipedOutputStream setSystemInObject() throws Exception{
+
+        PipedInputStream testInPipe=new PipedInputStream();
+        PipedOutputStream testOutPipe=new PipedOutputStream();
+        testInPipe.connect(testOutPipe);
+        System.setIn(testInPipe);
+        return testOutPipe;
+    }
+
     @Test public void customerIsWelcomed(){
         Library lib=null;
         assertEquals("Welcome to Biblioteca\n",new CustomerPrompt(lib).welcomeDisplay());
@@ -42,14 +51,8 @@ public class CustomerPromptTest {
         Library lib=new Library(bookCollection);
 
         //To Fix input to Book id: TC001
-        PipedInputStream testInPipe=new PipedInputStream();
-        PipedOutputStream testOutPipe=new PipedOutputStream();
-        testInPipe.connect(testOutPipe);
-        System.setIn(testInPipe);
-
-
         String withLine="TC001"+"\n";
-        testOutPipe.write(withLine.getBytes(),0,withLine.length());
+        setSystemInObject().write(withLine.getBytes(),0,withLine.length());
 
         assertEquals("Thank You! Enjoy the book.",new CustomerPrompt(lib).getResultsForOptionSelected('R'));
 
