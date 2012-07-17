@@ -46,19 +46,19 @@ public class LibraryTest {
     @Test public void availableBookIsReserved(){
         initialize();
         Library lib=new Library(book);
-               assertTrue(lib.reserveBook("TC001"));
+               assertTrue(lib.reserveBookWithId("TC001"));
 
     }
 
     @Test public void outOfStockBookIsNotReserved(){
                 initialize();
 
-                assertFalse(new Library(book).reserveBook("TG001"));
+                assertFalse(new Library(book).reserveBookWithId("TG001"));
     }
 
     @Test public void unavailableBooksAreNotReserved(){
             initialize();
-            assertFalse(new Library(book).reserveBook("AB001"));
+            assertFalse(new Library(book).reserveBookWithId("AB001"));
     }
 
     @Test public void singleAvailableBookIsDisplayed(){

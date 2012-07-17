@@ -18,7 +18,7 @@ public class Library {
     }
 
    //To Reserve a book with Book Id bId
-   public boolean reserveBook(String bId) {
+   public boolean reserveBookWithId(String bId) {
 
         for(int i=0;i< book.length;++i){
             if((book[i].getId()).equals(bId)){

@@ -52,7 +52,7 @@ public class CustomerPrompt {
                 System.out.print(biblioteca.displayAllBooks());
                 System.out.print("Enter Book Id of the Book to reserve: ");
                 Scanner sc=new Scanner(System.in);
-                if(biblioteca.reserveBook(sc.nextLine())){
+                if(biblioteca.reserveBookWithId(sc.nextLine())){
                            return "Thank You! Enjoy the book.";
                 }
                 return "Sorry we don't have that book yet.";
