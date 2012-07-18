@@ -17,8 +17,8 @@ public class RunAtConsole {
             book[2]=new Book("TG001","The Godfather","Mario Puzo",1);
             book[3]=new Book("TC001","The Confession","John Grisham",5);
             book[4]=new Book("B001","Brida","Paolo Coelho",5);
-        Library lib=new Library(book);
-        CustomerPrompt bibliotecaCI=new CustomerPrompt(lib);
-        bibliotecaCI.menuDisplay();
+        Library biblioteca=new Library(book);
+        Menu menu=new Menu(biblioteca);
+        menu.startMenu();
     }
 }

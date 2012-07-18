@@ -31,12 +31,12 @@ public class BookTest {
     @Test public void canReserveIfBookAvailable() throws Exception{
 
         Book testBook=new Book("TC001","The Confession","John Grisham",5);
-        assertTrue(testBook.decreaseCount());
+        assertTrue(testBook.reserve());
     }
 
     @Test public void cannotReserveIfBookNotAvailable() throws Exception{
         Book testBook=new Book("TC001","The Confession","John Grisham",0);
-        assertFalse(testBook.decreaseCount());
+        assertFalse(testBook.reserve());
     }
 }
 

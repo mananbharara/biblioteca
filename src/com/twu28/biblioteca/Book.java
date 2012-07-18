@@ -43,7 +43,7 @@ public class Book {
     }
 
     //To decrease the available book count and increase the issued book count
-    boolean decreaseCount(){
+    boolean reserve(){
         if(isAvailable()){
         ++numberIssued;
         return true;

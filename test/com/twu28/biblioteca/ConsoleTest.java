@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  * Time: 11:02 PM
  * To change this template use File | Settings | File Templates.
  */
-public class ConsoleMenuTest {
+public class ConsoleTest {
 
     public PipedOutputStream getMockInputStream() throws Exception{
         PipedInputStream testInPipe=new PipedInputStream();
@@ -33,10 +33,25 @@ public class ConsoleMenuTest {
         return testOut;
     }
 
-    @Test public void menuIsDisplayedOnConsole() throws Exception{
-        ByteArrayOutputStream receivedOutput=setMockOutputStream();
-        new ConsoleMenu().displayOptionsMenu();
-        assertEquals("Please choose from the following options: \n\nView All Books\nReserve a Book\nCheck your Library Number\nExit\n\n",receivedOutput.toString());
 
+
+    @Test public void dataIsDisplayedOnConsole()throws Exception{
+        ByteArrayOutputStream receivedOutput=setMockOutputStream();
+        new Console().display("This is a test");
+        String newLine = System.getProperty("line.separator");
+        if (newLine == null) newLine = "\n";
+        String expected="This is a test"+newLine;
+        assertEquals(expected,receivedOutput.toString());
+    }
+
+    @Test public void inputIsCorrectlyReceivedFromConsole() throws Exception{
+        PipedOutputStream setInput=getMockInputStream();
+        ByteArrayOutputStream receivedOutput=setMockOutputStream();
+        getMockInputStream().write("Test Input\n".getBytes());
+        assertEquals("Test Input", new Console().queryUser("Enter Test Input"));
+        String newLine = System.getProperty("line.separator");
+        if (newLine == null) newLine = "\n";
+        String expected="Enter Test Input"+newLine;
+        assertEquals(expected,receivedOutput.toString());
     }
 }
