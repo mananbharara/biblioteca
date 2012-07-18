@@ -1,5 +1,7 @@
 package com.twu28.biblioteca;
 
+import java.util.ArrayList;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Manan
@@ -10,13 +12,12 @@ package com.twu28.biblioteca;
 public class RunAtConsole {
 
     public static void main(String args[]){
-        char ch='y';
-        Book book[]=new Book[5];
-            book[0]=new Book("SH001","Sherlock Holmes","Ser Arthur Conan Doyle",5);
-            book[1]=new Book("DP001","Deception Point","Dan Brown",10);
-            book[2]=new Book("TG001","The Godfather","Mario Puzo",1);
-            book[3]=new Book("TC001","The Confession","John Grisham",5);
-            book[4]=new Book("B001","Brida","Paolo Coelho",5);
+        ArrayList<Book> book=new ArrayList<Book>();
+            book.add(new Book("SH001","Sherlock Holmes","Ser Arthur Conan Doyle",5));
+            book.add(new Book("DP001","Deception Point","Dan Brown",10));
+            book.add(new Book("TG001","The Godfather","Mario Puzo",1));
+            book.add(new Book("TC001","The Confession","John Grisham",5));
+            book.add(new Book("B001","Brida","Paolo Coelho",5));
         Library biblioteca=new Library(book);
         Menu menu=new Menu(biblioteca);
         menu.startMenu();

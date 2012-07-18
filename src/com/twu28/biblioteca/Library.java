@@ -1,5 +1,7 @@
 package com.twu28.biblioteca;
 
+import java.util.ArrayList;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Manan
@@ -11,17 +13,17 @@ package com.twu28.biblioteca;
 
 public class Library {
 
-    Book book[];                       //To store the books available in the library
-    Library(Book bArray[]){
+    ArrayList<Book> book;                       //To store the books available in the library
+    Library(ArrayList<Book> bList){
 
-                book =bArray;
+                book =bList;
                 }
 
    //To Reserve a book with Book Id bId
    public boolean reserveBook(String bId) {
-        for(int i=0;i< book.length;++i){
-            if((book[i].getId()).equals(bId)){
-                return book[i].reserve();
+        for(Book b:book){
+            if((b.getId()).equals(bId)){
+                return b.reserve();
             }
         }
              return false;
@@ -30,8 +32,8 @@ public class Library {
     //To Display a list of all books available with the Library
     public String getAllBooks() {
         StringBuffer allBookInfo=new StringBuffer("");
-        for(int i=0;i< book.length;++i){
-             allBookInfo.append(book[i].getId()+" - "+ book[i].getInfo()+"\n");
+        for(Book b:book){
+             allBookInfo.append(b.getId()+" - "+ b.getInfo()+"\n");
         }
         return (allBookInfo.toString());
     }

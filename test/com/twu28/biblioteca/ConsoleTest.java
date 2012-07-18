@@ -40,7 +40,7 @@ public class ConsoleTest {
         new Console().display("This is a test");
         String newLine = System.getProperty("line.separator");
         if (newLine == null) newLine = "\n";
-        String expected="This is a test"+newLine;
+        String expected="This is a test";
         assertEquals(expected,receivedOutput.toString());
     }
 

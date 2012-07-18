@@ -2,6 +2,8 @@ package com.twu28.biblioteca;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 /**
@@ -14,8 +16,8 @@ import static org.junit.Assert.*;
 public class LibraryTest {
 
     @Test public void availableBookIsReserved()throws Exception{
-        Book book[]=new Book[1];
-        book[0]=new Book("TG001","The Godfather","Mario Puzo",1);
+        ArrayList<Book> book=new ArrayList<Book>();
+        book.add(new Book("TG001","The Godfather","Mario Puzo",1));
         Library lib=new Library(book);
         assertTrue(lib.reserveBook("TG001"));
 
@@ -23,21 +25,21 @@ public class LibraryTest {
 
     @Test public void outOfStockBookIsNotReserved(){
 
-        Book book[]=new Book[1];
-        book[0]=new Book("TG001","The Godfather","Mario Puzo",0);
+        ArrayList<Book> book=new ArrayList<Book>();
+        book.add(new Book("TG001","The Godfather","Mario Puzo",0));
         assertFalse(new Library(book).reserveBook("TG001"));
     }
 
     @Test public void unavailableBooksAreNotReserved(){
-            Book book[]=new Book[1];
-            book[0]=new Book("TG001","The Godfather","Mario Puzo",1);
+        ArrayList<Book> book=new ArrayList<Book>();
+        book.add(new Book("TG001","The Godfather","Mario Puzo",1));
             assertFalse(new Library(book).reserveBook("AB001"));
     }
 
     @Test public void singleAvailableBookIsDisplayed(){
-            Book book[]=new Book[1];
-            book[0]=new Book("TG002","The girl with the dragon tattoo","Stieg Larrson",5);         //To store only one book in Library
-            assertEquals("TG002 - The girl with the dragon tattoo by Stieg Larrson\n",new Library(book).getAllBooks());
+        ArrayList<Book> book=new ArrayList<Book>();
+        book.add(new Book("TG002","The girl with the dragon tattoo","Stieg Larrson",5));         //To store only one book in Library
+        assertEquals("TG002 - The girl with the dragon tattoo by Stieg Larrson\n",new Library(book).getAllBooks());
     }
 
 

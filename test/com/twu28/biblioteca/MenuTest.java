@@ -6,6 +6,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -22,8 +23,8 @@ public class MenuTest {
     Library lib;
 
     public void initialize(){
-        Book book[]=new Book[1];
-        book[0]=new Book("TG001","The Godfather","Mario Puzo",1);
+        ArrayList<Book> book=new ArrayList<Book>();
+        book.add(new Book("TG001","The Godfather","Mario Puzo",1));
         lib=new Library(book);
     }
 
@@ -60,8 +61,8 @@ public class MenuTest {
         }
 
     @Test public void bookNotReservedIfNotAvailable() throws Exception{
-        Book book[]=new Book[1];
-        book[0]=new Book("TG001","The Godfather","Mario Puzo",0);
+        ArrayList<Book> book=new ArrayList<Book>();
+        book.add(new Book("TG001","The Godfather","Mario Puzo",0));
         lib=new Library(book);
         getMockInputStream().write("TG001\n".getBytes());
         ByteArrayOutputStream receivedOutput=setMockOutputStream();
