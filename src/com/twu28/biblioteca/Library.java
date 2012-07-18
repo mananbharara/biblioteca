@@ -38,7 +38,7 @@ public class Library {
     public String getAllBooks() {
         StringBuffer allBookInfo=new StringBuffer("");
         for(Book b:book){
-             allBookInfo.append(b.getId()+" - "+ b.getInfo()+"\n");
+             allBookInfo.append(b.getId()+" - "+ b.toString()+"\n");
         }
         return (allBookInfo.toString());
     }
@@ -46,7 +46,7 @@ public class Library {
     public String getAllMovies(){
         StringBuffer allMovieInfo=new StringBuffer("");
         for(Movie m:movies){
-            allMovieInfo.append(m.getMovieInfo()+"\n");
+            allMovieInfo.append(m.toString()+"\n");
         }
         return allMovieInfo.toString();
     }

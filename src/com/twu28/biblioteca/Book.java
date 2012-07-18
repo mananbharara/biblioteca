@@ -33,7 +33,7 @@ public class Book {
     }
 
     //To return book info
-    String getInfo(){
+    public String toString(){
         return(name+" by "+author);
     }
 

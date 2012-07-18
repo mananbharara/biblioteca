@@ -45,7 +45,7 @@ public class LibraryTest {
     @Test public void singleAvailableMovieIsReturned(){
         ArrayList<Movie> movies=new ArrayList<Movie>();
         movies.add(new Movie("The Terminal","Steven Spielsberg",8));
-        assertEquals("The Terminal Steven Spielsberg 8\n",new Library(null,movies).getAllMovies());
+        assertEquals("The Terminal Steven Spielsberg 8/10\n",new Library(null,movies).getAllMovies());
  }
 
 

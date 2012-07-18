@@ -48,7 +48,7 @@ public class MenuTest {
     @Test public void allBooksDisplayedIfCustomerChoiceIsV() throws Exception{
         initialize();
         ByteArrayOutputStream receivedOutput=setMockOutputStream();
-        new Menu(lib).displayResultsForOption('V');
+        new Menu(lib).displayResultsForOption('B');
         assertEquals("TG001 - The Godfather by Mario Puzo\n",receivedOutput.toString());
     }
 
@@ -69,6 +69,15 @@ public class MenuTest {
         new Menu(lib).displayResultsForOption('R');
         assertEquals("Enter Book Id of the Book to reserve: "+newLine+"Sorry we don't have that book yet.\n",receivedOutput.toString());
 
+    }
+
+    @Test public void allMoviesDisplayedIfCustomerChoiceIsM() throws Exception{
+        ArrayList<Movie>movies=new ArrayList<Movie>();
+        movies.add(new Movie("The Terminal","Steven Spielsberg",8));
+        lib=new Library(null,movies);
+        ByteArrayOutputStream receivedOutput=setMockOutputStream();
+        new Menu(lib).displayResultsForOption('M');
+        assertEquals("The Terminal Steven Spielsberg 8/10\n",receivedOutput.toString());
     }
 
     @Test public void InvalidMessageIfIncorrectOptionSelected()throws Exception{

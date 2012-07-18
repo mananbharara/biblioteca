@@ -27,9 +27,9 @@ public class Movie {
         isRated=false;
     }
 
-    public String getMovieInfo() {
+    public String toString() {
         if(isRated){
-            return name+" "+director+" "+rating;
+            return name+" "+director+" "+rating+"/10";
         }
         return name+" "+director+" "+"N/A";
     }

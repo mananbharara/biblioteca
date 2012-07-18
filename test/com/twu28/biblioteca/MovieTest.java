@@ -14,11 +14,11 @@ import static org.junit.Assert.*;
 public class MovieTest {
 
     @Test public void movieInfoIsDisplayedWhenRatingAvailable()throws Exception{
-        assertEquals("Sholay Ramesh Sippy 8",new Movie("Sholay","Ramesh Sippy",8).getMovieInfo());
+        assertEquals("Sholay Ramesh Sippy 8/10",new Movie("Sholay","Ramesh Sippy",8).toString());
     }
 
     @Test public void NAIsDisplayedWhenRatingNotAvailable() throws  Exception{
-        assertEquals("Prometheus Ridley Scott N/A",new Movie("Prometheus","Ridley Scott").getMovieInfo());
+        assertEquals("Prometheus Ridley Scott N/A",new Movie("Prometheus","Ridley Scott").toString());
 
     }
 }

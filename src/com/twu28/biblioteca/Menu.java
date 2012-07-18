@@ -18,6 +18,7 @@ public class Menu {
                 "\n" +
                 "View All Books\n" +
                 "Reserve a Book\n" +
+                "View All Movies\n"+
                 "Check your Library Number\n" +
                 "Exit\n";
         biblioteca=lib;
@@ -26,14 +27,14 @@ public class Menu {
 
     public void startMenu(){
         libraryConsole.display(optionsMenu);
-        String optionSelected=libraryConsole.queryUser("Enter your choice(V,R,C or E):");
+        String optionSelected=libraryConsole.queryUser("Enter your choice(B,R,M,C or E):");
         displayResultsForOption(optionSelected.charAt(0));
     }
 
 
     public void displayResultsForOption(char optionSelected) {
         switch (optionSelected){
-            case 'V':
+            case 'B':
                 libraryConsole.display(biblioteca.getAllBooks());
                 break;
             case 'R':
@@ -45,7 +46,9 @@ public class Menu {
                 else
                     libraryConsole.display("Sorry we don't have that book yet.\n");
                 break;
-
+            case 'M':
+                libraryConsole.display(biblioteca.getAllMovies());
+                break;
             case 'E':
                 libraryConsole.exitApplication();
                 break;
