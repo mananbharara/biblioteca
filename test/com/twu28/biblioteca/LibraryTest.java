@@ -36,11 +36,17 @@ public class LibraryTest {
             assertFalse(new Library(book).reserveBook("AB001"));
     }
 
-    @Test public void singleAvailableBookIsDisplayed(){
+    @Test public void singleAvailableBookIsReturned(){
         ArrayList<Book> book=new ArrayList<Book>();
         book.add(new Book("TG002","The girl with the dragon tattoo","Stieg Larrson",5));         //To store only one book in Library
         assertEquals("TG002 - The girl with the dragon tattoo by Stieg Larrson\n",new Library(book).getAllBooks());
     }
+
+    @Test public void singleAvailableMovieIsReturned(){
+        ArrayList<Movie> movies=new ArrayList<Movie>();
+        movies.add(new Movie("The Terminal","Steven Spielsberg",8));
+        assertEquals("The Terminal Steven Spielsberg 8\n",new Library(null,movies).getAllMovies());
+ }
 
 
 

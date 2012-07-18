@@ -14,10 +14,15 @@ import java.util.ArrayList;
 public class Library {
 
     ArrayList<Book> book;                       //To store the books available in the library
+    ArrayList<Movie> movies;
     Library(ArrayList<Book> bList){
-
-                book =bList;
+               book =bList;
                 }
+    Library(ArrayList<Book> bookList,ArrayList<Movie>movieList){
+        book=bookList;
+        movies=movieList;
+    }
+
 
    //To Reserve a book with Book Id bId
    public boolean reserveBook(String bId) {
@@ -36,5 +41,13 @@ public class Library {
              allBookInfo.append(b.getId()+" - "+ b.getInfo()+"\n");
         }
         return (allBookInfo.toString());
+    }
+
+    public String getAllMovies(){
+        StringBuffer allMovieInfo=new StringBuffer("");
+        for(Movie m:movies){
+            allMovieInfo.append(m.getMovieInfo()+"\n");
+        }
+        return allMovieInfo.toString();
     }
 }
