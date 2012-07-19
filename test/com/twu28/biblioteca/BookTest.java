@@ -15,7 +15,7 @@ public class BookTest {
 
     @Test public void bookInfoIsCorrect() throws Exception{
 
-        assertEquals("Game Of Thrones by R.R. Martin",new Book("GT001","Game Of Thrones","R.R. Martin",20).toString());
+        assertEquals("TG001 - Game Of Thrones by R.R. Martin",new Book("TG001","Game Of Thrones","R.R. Martin",20).toString());
     }
 
     @Test public void getTrueIfBookIsAvailable() throws Exception{

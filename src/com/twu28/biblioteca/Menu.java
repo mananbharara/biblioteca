@@ -1,5 +1,7 @@
 package com.twu28.biblioteca;
 
+import java.util.ArrayList;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Manan
@@ -31,14 +33,13 @@ public class Menu {
         displayResultsForOption(optionSelected.charAt(0));
     }
 
-
     public void displayResultsForOption(char optionSelected) {
         switch (optionSelected){
             case 'B':
-                libraryConsole.display(biblioteca.getAllBooks());
+                libraryConsole.display(getAllEntitiesAsString(optionSelected));
                 break;
             case 'R':
-                //menu.display(getAllBooks());
+                //menu.display(getEntities());
                 String bId = libraryConsole.queryUser("Enter Book Id of the Book to reserve: ");
                 if(biblioteca.reserveBook(bId)){
                     libraryConsole.display("Thank You! Enjoy the book.\n");
@@ -47,7 +48,7 @@ public class Menu {
                     libraryConsole.display("Sorry we don't have that book yet.\n");
                 break;
             case 'M':
-                libraryConsole.display(biblioteca.getAllMovies());
+                libraryConsole.display(getAllEntitiesAsString(optionSelected));
                 break;
             case 'E':
                 libraryConsole.exitApplication();
@@ -58,5 +59,14 @@ public class Menu {
             default:
                 libraryConsole.display("Select a valid option!!\n");
         }
+    }
+
+    public String getAllEntitiesAsString(char optionSelected){
+        ArrayList entityList=(biblioteca.getEntities(optionSelected));
+        StringBuffer allEntitiesBuffer=new StringBuffer();
+        for(Object entity:entityList){
+            allEntitiesBuffer.append(entity.toString()+"\n");
+        }
+        return allEntitiesBuffer.toString();
     }
 }

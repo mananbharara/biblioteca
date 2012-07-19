@@ -22,6 +22,6 @@ public class Console {
 
     public void exitApplication() {
         System.out.println("Goodbye, Visit Again");
-        System.exit(0);
+
     }
 }

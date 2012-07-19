@@ -7,12 +7,12 @@ package com.twu28.biblioteca;
  * Time: 11:48 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Movie {
+public class Movie{
 
-    String name;
-    String director;
-    int rating;
-    boolean isRated;
+    private String name;
+    private String director;
+    private int rating;
+    private boolean isRated;
 
     Movie(String movieName,String movieDirector,int movieRating){
         name=movieName;

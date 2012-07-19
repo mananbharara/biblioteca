@@ -1,6 +1,7 @@
 package com.twu28.biblioteca;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created with IntelliJ IDEA.
@@ -35,19 +36,22 @@ public class Library {
     }
 
     //To Display a list of all books available with the Library
-    public String getAllBooks() {
-        StringBuffer allBookInfo=new StringBuffer("");
-        for(Book b:book){
-             allBookInfo.append(b.getId()+" - "+ b.toString()+"\n");
-        }
-        return (allBookInfo.toString());
+    public ArrayList getEntities(char entity) {
+        return listBuilder(entity);
     }
 
-    public String getAllMovies(){
-        StringBuffer allMovieInfo=new StringBuffer("");
-        for(Movie m:movies){
-            allMovieInfo.append(m.toString()+"\n");
+    public ArrayList listBuilder(char entity){
+        ArrayList entityList = null;
+        switch (entity){
+            case 'B':
+                entityList=book;
+                break;
+            case 'M':
+                entityList= movies;
+                break;
         }
-        return allMovieInfo.toString();
+        return entityList;
     }
+
+
 }

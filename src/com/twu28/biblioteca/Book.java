@@ -8,7 +8,7 @@ package com.twu28.biblioteca;
  * Time: 5:29 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Book {
+public class Book{
 
     private String name;
     private String author;
@@ -33,8 +33,9 @@ public class Book {
     }
 
     //To return book info
+    @Override
     public String toString(){
-        return(name+" by "+author);
+        return(getId()+" - "+name+" by "+author);
     }
 
     //To return book id

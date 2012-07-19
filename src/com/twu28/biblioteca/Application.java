@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Time: 7:30 PM
  * To change this template use File | Settings | File Templates.
  */
-public class RunAtConsole {
+public class Application {
 
     static ArrayList<Book> book;
     static ArrayList<Movie> movies;

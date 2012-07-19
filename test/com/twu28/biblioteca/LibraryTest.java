@@ -39,13 +39,13 @@ public class LibraryTest {
     @Test public void singleAvailableBookIsReturned(){
         ArrayList<Book> book=new ArrayList<Book>();
         book.add(new Book("TG002","The girl with the dragon tattoo","Stieg Larrson",5));         //To store only one book in Library
-        assertEquals("TG002 - The girl with the dragon tattoo by Stieg Larrson\n",new Library(book).getAllBooks());
+        assertEquals(book,new Library(book).getEntities('B'));
     }
 
     @Test public void singleAvailableMovieIsReturned(){
         ArrayList<Movie> movies=new ArrayList<Movie>();
         movies.add(new Movie("The Terminal","Steven Spielsberg",8));
-        assertEquals("The Terminal Steven Spielsberg 8/10\n",new Library(null,movies).getAllMovies());
+        assertEquals(movies,new Library(null,movies).getEntities('M'));
  }
 
 
