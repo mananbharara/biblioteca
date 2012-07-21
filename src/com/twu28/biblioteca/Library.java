@@ -1,7 +1,6 @@
 package com.twu28.biblioteca;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,52 +13,76 @@ import java.util.HashMap;
 
 public class Library {
 
-    ArrayList<Book> book;                       //To store the books available in the library
-    ArrayList<Movie> movies;
-    Library(){
-        book=new ArrayList<Book>();
-        book.add(new Book("SH001","Sherlock Holmes","Ser Arthur Conan Doyle",5));
-        book.add(new Book("DP001","Deception Point","Dan Brown",10));
-        book.add(new Book("TG001","The Godfather","Mario Puzo",1));
-        book.add(new Book("TC001","The Confession","John Grisham",5));
-        book.add(new Book("B001","Brida","Paolo Coelho",0));
+    ArrayList<LibraryItem> libraryItems;                       //To store the items available in the library
 
-        movies=new ArrayList<Movie>();
-        movies.add(new Movie("Sholay","Ramesh Sippy",8));
-        movies.add(new Movie("The Departed","Martin Scorsese",9));
-        movies.add(new Movie("Blood Diamond","Edward Zwick",8));
-        movies.add(new Movie("Rockstar","Imtiaz Ali"));
-        movies.add(new Movie("Cocktail","Homi Adjania"));
+    Library(){
+        libraryItems =new ArrayList<LibraryItem>();
+        libraryItems.add(new Book("SH001", "Sherlock Holmes", "Ser Arthur Conan Doyle", 5));
+        libraryItems.add(new Book("DP001", "Deception Point", "Dan Brown", 10));
+        libraryItems.add(new Book("TG001", "The Godfather", "Mario Puzo", 1));
+        libraryItems.add(new Book("TC001", "The Confession", "John Grisham", 5));
+        libraryItems.add(new Book("B001", "Brida", "Paolo Coelho", 0));
+
+        libraryItems.add(new Movie("Sholay", "Ramesh Sippy", 8));
+        libraryItems.add(new Movie("The Departed", "Martin Scorsese", 9));
+        libraryItems.add(new Movie("Blood Diamond", "Edward Zwick", 8));
+        libraryItems.add(new Movie("Rockstar", "Imtiaz Ali"));
+        libraryItems.add(new Movie("Cocktail", "Homi Adjania"));
+        libraryItems.add(new Movie("The Dark Knight Rises", "Christopher Nolan"));
+        libraryItems.add(new Movie("Shawshank Redemption", "Frank Darabont",9));
+        libraryItems.add(new Movie("The Godfather", "Francis Ford Coppola",9));
+        libraryItems.add(new Movie("The Dark Knight", "Christopher Nolan",8));
+        libraryItems.add(new Movie("Inception", "Christopher Nolan",9));
+        libraryItems.add(new Movie("Forrest Gump", "Robert Zemeckis",7));
+        libraryItems.add(new Movie("Memento", "Christopher Nolan",8));
+        libraryItems.add(new Movie("Wall-E", "Andrew Stanton",9));
+        libraryItems.add(new Movie("The Illusionist", "Neil Burger",8));
+        libraryItems.add(new Movie("The Prestige", "Christopher Nolan",7));
+
 
     }
 
 
    //To Reserve a book with Book Id bId
    public boolean reserveBook(String bId) {
-        for(Book b:book){
-            if((b.getId()).equals(bId)){
-                return b.reserve();
+        for(LibraryItem b: libraryItems){
+            if(b instanceof Book){
+                Book bookToReserve= (Book) b;
+                if((bookToReserve.getId()).equals(bId)){
+                    return bookToReserve.reserve();
+                }
             }
+
         }
              return false;
     }
 
     //To Display a list of all books available with the Library
-    public ArrayList<LibraryItem> getEntities(char entity) {
+    public ArrayList<LibraryItem> getLibraryItems(char entity) {
         return listBuilder(entity);
     }
 
-    public ArrayList<LibraryItem> listBuilder(char entity){
-        ArrayList entityList = null;
-        switch (entity){
+    public ArrayList<LibraryItem> listBuilder(char requiredItem){
+        ArrayList<LibraryItem> itemList=new ArrayList<LibraryItem>();
+        switch (requiredItem){
             case 'B':
-                entityList=book;
+                for (LibraryItem b:libraryItems)
+                {
+                    if(b instanceof Book){
+                        itemList.add(b);
+                    }
+                }
                 break;
             case 'M':
-                entityList= movies;
+                for (LibraryItem m:libraryItems)
+                {
+                    if(m instanceof Movie){
+                        itemList.add(m);
+                    }
+                }
                 break;
         }
-        return entityList;
+        return itemList;
     }
 
 

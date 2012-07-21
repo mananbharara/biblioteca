@@ -71,7 +71,17 @@ public class MenuTest {
                 "The Departed Martin Scorsese 9/10\n" +
                 "Blood Diamond Edward Zwick 8/10\n" +
                 "Rockstar Imtiaz Ali N/A\n" +
-                "Cocktail Homi Adjania N/A\n";
+                "Cocktail Homi Adjania N/A\n" +
+                "The Dark Knight Rises Christopher Nolan N/A\n" +
+                "Shawshank Redemption Frank Darabont 9/10\n" +
+                "The Godfather Francis Ford Coppola 9/10\n" +
+                "The Dark Knight Christopher Nolan 8/10\n" +
+                "Inception Christopher Nolan 9/10\n" +
+                "Forrest Gump Robert Zemeckis 7/10\n" +
+                "Memento Christopher Nolan 8/10\n" +
+                "Wall-E Andrew Stanton 9/10\n" +
+                "The Illusionist Neil Burger 8/10\n" +
+                "The Prestige Christopher Nolan 7/10\n";
         ByteArrayOutputStream receivedOutput=setMockOutputStream();
         new Menu(null).displayResultsForOption('M');
         assertEquals(expected,receivedOutput.toString());
@@ -83,10 +93,17 @@ public class MenuTest {
         assertEquals("Select a valid option!!\n",receivedOutput.toString());
     }
 
-    @Test public void notificationOnCheckLibraryNumber(){
+    @Test public void notificationOnCheckLibraryNumberIfNotLoggedIn()throws Exception{
 
         ByteArrayOutputStream receivedOutput=setMockOutputStream();
         new Menu(null).displayResultsForOption('C');
         assertEquals("Please talk to Librarian. Thank you.\n",receivedOutput.toString());
+    }
+
+    @Test public void notificationOnCheckLibraryNumberIfLoggedIn() throws Exception{
+
+        ByteArrayOutputStream receivedOutput=setMockOutputStream();
+        new Menu("111-11111").displayResultsForOption('C');
+        assertEquals("111-11111\n",receivedOutput.toString());
     }
 }

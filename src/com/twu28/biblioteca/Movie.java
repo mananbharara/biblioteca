@@ -14,7 +14,7 @@ public class Movie implements LibraryItem {
     private int rating;
     private boolean isRated;
 
-    Movie(String movieName,String movieDirector,int movieRating){
+    public Movie(String movieName,String movieDirector,int movieRating){
         name=movieName;
         director=movieDirector;
         isRated=true;
