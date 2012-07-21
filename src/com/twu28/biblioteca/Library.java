@@ -16,12 +16,21 @@ public class Library {
 
     ArrayList<Book> book;                       //To store the books available in the library
     ArrayList<Movie> movies;
-    Library(ArrayList<Book> bList){
-               book =bList;
-                }
-    Library(ArrayList<Book> bookList,ArrayList<Movie>movieList){
-        book=bookList;
-        movies=movieList;
+    Library(){
+        book=new ArrayList<Book>();
+        book.add(new Book("SH001","Sherlock Holmes","Ser Arthur Conan Doyle",5));
+        book.add(new Book("DP001","Deception Point","Dan Brown",10));
+        book.add(new Book("TG001","The Godfather","Mario Puzo",1));
+        book.add(new Book("TC001","The Confession","John Grisham",5));
+        book.add(new Book("B001","Brida","Paolo Coelho",0));
+
+        movies=new ArrayList<Movie>();
+        movies.add(new Movie("Sholay","Ramesh Sippy",8));
+        movies.add(new Movie("The Departed","Martin Scorsese",9));
+        movies.add(new Movie("Blood Diamond","Edward Zwick",8));
+        movies.add(new Movie("Rockstar","Imtiaz Ali"));
+        movies.add(new Movie("Cocktail","Homi Adjania"));
+
     }
 
 
@@ -36,11 +45,11 @@ public class Library {
     }
 
     //To Display a list of all books available with the Library
-    public ArrayList getEntities(char entity) {
+    public ArrayList<LibraryItem> getEntities(char entity) {
         return listBuilder(entity);
     }
 
-    public ArrayList listBuilder(char entity){
+    public ArrayList<LibraryItem> listBuilder(char entity){
         ArrayList entityList = null;
         switch (entity){
             case 'B':

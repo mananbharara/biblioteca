@@ -20,13 +20,7 @@ import static org.junit.Assert.*;
 public class MenuTest {
 
     String newLine;
-    Library lib;
 
-    public void initialize(){
-        ArrayList<Book> book=new ArrayList<Book>();
-        book.add(new Book("TG001","The Godfather","Mario Puzo",1));
-        lib=new Library(book);
-    }
 
     public PipedOutputStream getMockInputStream() throws Exception{
         PipedInputStream testInPipe=new PipedInputStream();
@@ -46,52 +40,53 @@ public class MenuTest {
     }
 
     @Test public void allBooksDisplayedIfCustomerChoiceIsV() throws Exception{
-        initialize();
+        String expected="SH001 - Sherlock Holmes by Ser Arthur Conan Doyle\n" +
+                "DP001 - Deception Point by Dan Brown\n" +
+                "TG001 - The Godfather by Mario Puzo\n" +
+                "TC001 - The Confession by John Grisham\n" +
+                "B001 - Brida by Paolo Coelho\n";
         ByteArrayOutputStream receivedOutput=setMockOutputStream();
-        new Menu(lib).displayResultsForOption('B');
-        assertEquals("TG001 - The Godfather by Mario Puzo\n",receivedOutput.toString());
+        new Menu(null).displayResultsForOption('B');
+        assertEquals(expected,receivedOutput.toString());
     }
 
     @Test public void bookReservedIfAvailableAndOptionIsR() throws Exception{
-        initialize();
+
         getMockInputStream().write("TG001\n".getBytes());
         ByteArrayOutputStream receivedOutput=setMockOutputStream();
-        new Menu(lib).displayResultsForOption('R');
+        new Menu(null).displayResultsForOption('R');
         assertEquals("Enter Book Id of the Book to reserve: " + newLine + "Thank You! Enjoy the book.\n", receivedOutput.toString());
         }
 
     @Test public void bookNotReservedIfNotAvailable() throws Exception{
-        ArrayList<Book> book=new ArrayList<Book>();
-        book.add(new Book("TG001","The Godfather","Mario Puzo",0));
-        lib=new Library(book);
-        getMockInputStream().write("TG001\n".getBytes());
+        getMockInputStream().write("B001\n".getBytes());
         ByteArrayOutputStream receivedOutput=setMockOutputStream();
-        new Menu(lib).displayResultsForOption('R');
+        new Menu(null).displayResultsForOption('R');
         assertEquals("Enter Book Id of the Book to reserve: "+newLine+"Sorry we don't have that book yet.\n",receivedOutput.toString());
 
     }
 
     @Test public void allMoviesDisplayedIfCustomerChoiceIsM() throws Exception{
-        ArrayList<Movie>movies=new ArrayList<Movie>();
-        movies.add(new Movie("The Terminal","Steven Spielsberg",8));
-        lib=new Library(null,movies);
+        String expected="Sholay Ramesh Sippy 8/10\n" +
+                "The Departed Martin Scorsese 9/10\n" +
+                "Blood Diamond Edward Zwick 8/10\n" +
+                "Rockstar Imtiaz Ali N/A\n" +
+                "Cocktail Homi Adjania N/A\n";
         ByteArrayOutputStream receivedOutput=setMockOutputStream();
-        new Menu(lib).displayResultsForOption('M');
-        assertEquals("The Terminal Steven Spielsberg 8/10\n",receivedOutput.toString());
+        new Menu(null).displayResultsForOption('M');
+        assertEquals(expected,receivedOutput.toString());
     }
 
     @Test public void InvalidMessageIfIncorrectOptionSelected()throws Exception{
-
-            initialize();
-            ByteArrayOutputStream receivedOutput=setMockOutputStream();
-            new Menu(lib).displayResultsForOption('X');
-            assertEquals("Select a valid option!!\n",receivedOutput.toString());
+        ByteArrayOutputStream receivedOutput=setMockOutputStream();
+        new Menu(null).displayResultsForOption('X');
+        assertEquals("Select a valid option!!\n",receivedOutput.toString());
     }
 
     @Test public void notificationOnCheckLibraryNumber(){
-        initialize();
+
         ByteArrayOutputStream receivedOutput=setMockOutputStream();
-        new Menu(lib).displayResultsForOption('C');
+        new Menu(null).displayResultsForOption('C');
         assertEquals("Please talk to Librarian. Thank you.\n",receivedOutput.toString());
     }
 }

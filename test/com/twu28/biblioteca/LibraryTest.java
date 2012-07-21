@@ -15,37 +15,49 @@ import static org.junit.Assert.*;
  */
 public class LibraryTest {
 
+    ArrayList<LibraryItem> libraryItems;
+
+    public void initializeBooks(){
+        libraryItems=new ArrayList<LibraryItem>();
+        libraryItems.add(new Book("SH001", "Sherlock Holmes", "Ser Arthur Conan Doyle", 5));
+        libraryItems.add(new Book("DP001", "Deception Point", "Dan Brown", 10));
+        libraryItems.add(new Book("TG001", "The Godfather", "Mario Puzo", 1));
+        libraryItems.add(new Book("TC001", "The Confession", "John Grisham", 5));
+        libraryItems.add(new Book("B001", "Brida", "Paolo Coelho", 5));
+    }
+
+    public void initializeMovies(){
+        libraryItems=new ArrayList<LibraryItem>();
+        libraryItems.add(new Movie("Sholay","Ramesh Sippy",8));
+        libraryItems.add(new Movie("The Departed","Martin Scorsese",9));
+        libraryItems.add(new Movie("Blood Diamond","Edward Zwick",8));
+        libraryItems.add(new Movie("Rockstar","Imtiaz Ali"));
+        libraryItems.add(new Movie("Cocktail","Homi Adjania"));
+    }
+
     @Test public void availableBookIsReserved()throws Exception{
-        ArrayList<Book> book=new ArrayList<Book>();
-        book.add(new Book("TG001","The Godfather","Mario Puzo",1));
-        Library lib=new Library(book);
+        Library lib=new Library();
         assertTrue(lib.reserveBook("TG001"));
 
     }
 
     @Test public void outOfStockBookIsNotReserved(){
 
-        ArrayList<Book> book=new ArrayList<Book>();
-        book.add(new Book("TG001","The Godfather","Mario Puzo",0));
-        assertFalse(new Library(book).reserveBook("TG001"));
+        assertFalse(new Library().reserveBook("B001"));
     }
 
     @Test public void unavailableBooksAreNotReserved(){
-        ArrayList<Book> book=new ArrayList<Book>();
-        book.add(new Book("TG001","The Godfather","Mario Puzo",1));
-            assertFalse(new Library(book).reserveBook("AB001"));
+        assertFalse(new Library().reserveBook("AB001"));
     }
 
     @Test public void singleAvailableBookIsReturned(){
-        ArrayList<Book> book=new ArrayList<Book>();
-        book.add(new Book("TG002","The girl with the dragon tattoo","Stieg Larrson",5));         //To store only one book in Library
-        assertEquals(book,new Library(book).getEntities('B'));
+        initializeBooks();
+        assertEquals(libraryItems.toString(),new Library().getEntities('B').toString());
     }
 
     @Test public void singleAvailableMovieIsReturned(){
-        ArrayList<Movie> movies=new ArrayList<Movie>();
-        movies.add(new Movie("The Terminal","Steven Spielsberg",8));
-        assertEquals(movies,new Library(null,movies).getEntities('M'));
+        initializeMovies();
+        assertEquals(libraryItems.toString(), new Library().getEntities('M').toString());
  }
 
 

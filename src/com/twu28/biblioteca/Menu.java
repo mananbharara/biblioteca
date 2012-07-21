@@ -12,61 +12,92 @@ import java.util.ArrayList;
 public class Menu {
 
     private String optionsMenu;
-    private Library biblioteca;
+    public Library biblioteca;
     private Console libraryConsole;
+    char optionSelected;
+    String currentUserLibraryNumber;
 
-    public Menu(Library lib){
+
+    public Menu(String loggedInUserNumber){
         optionsMenu="Please choose from the following options: \n" +
                 "\n" +
-                "View All Books\n" +
+                "Books-View All\n" +
                 "Reserve a Book\n" +
-                "View All Movies\n"+
-                "Check your Library Number\n" +
-                "Exit\n";
-        biblioteca=lib;
+                "Movies-View All\n"+
+                "Check your Library Number\n";
+        biblioteca=new Library();
         libraryConsole=new Console();
+        currentUserLibraryNumber =loggedInUserNumber;
     }
 
     public void startMenu(){
         libraryConsole.display(optionsMenu);
-        String optionSelected=libraryConsole.queryUser("Enter your choice(B,R,M,C or E):");
-        displayResultsForOption(optionSelected.charAt(0));
+        String optionString=libraryConsole.queryUser("Enter your choice(B,R,M,C or E):");
+        optionSelected=optionString.charAt(0);
+        displayResultsForOption(optionSelected);
+    }
+
+    public Library getLibrary(){
+        return biblioteca;
     }
 
     public void displayResultsForOption(char optionSelected) {
         switch (optionSelected){
             case 'B':
-                libraryConsole.display(getAllEntitiesAsString(optionSelected));
+                libraryConsole.display(getAllBooksAsString());
                 break;
             case 'R':
                 //menu.display(getEntities());
-                String bId = libraryConsole.queryUser("Enter Book Id of the Book to reserve: ");
-                if(biblioteca.reserveBook(bId)){
-                    libraryConsole.display("Thank You! Enjoy the book.\n");
-                }
-                else
-                    libraryConsole.display("Sorry we don't have that book yet.\n");
+                libraryConsole.display(getResultsForOptionR());
                 break;
             case 'M':
-                libraryConsole.display(getAllEntitiesAsString(optionSelected));
-                break;
-            case 'E':
-                libraryConsole.exitApplication();
+                libraryConsole.display(getAllMoviesAsString());
                 break;
             case 'C':
-                libraryConsole.display("Please talk to Librarian. Thank you.\n");
+                libraryConsole.display(getLibraryNumberString());
                 break;
             default:
                 libraryConsole.display("Select a valid option!!\n");
         }
     }
 
-    public String getAllEntitiesAsString(char optionSelected){
-        ArrayList entityList=(biblioteca.getEntities(optionSelected));
-        StringBuffer allEntitiesBuffer=new StringBuffer();
-        for(Object entity:entityList){
-            allEntitiesBuffer.append(entity.toString()+"\n");
+    private String getAllMoviesAsString() {
+        ArrayList<LibraryItem> movies=biblioteca.getEntities('M');
+        StringBuffer moviesStringBuffer=new StringBuffer("");
+        for(LibraryItem b:movies){
+            moviesStringBuffer.append(b.toString() + "\n");
         }
-        return allEntitiesBuffer.toString();
+        return moviesStringBuffer.toString();
+
     }
+
+    private String getAllBooksAsString() {
+        ArrayList<LibraryItem> books=biblioteca.getEntities('B');
+        StringBuffer booksStringBuffer=new StringBuffer("");
+        for(LibraryItem b:books){
+            booksStringBuffer.append(b.toString() + "\n");
+        }
+
+        return booksStringBuffer.toString();
+    }
+
+    private String getLibraryNumberString() {
+        if(currentUserLibraryNumber==null){
+        return "Please talk to Librarian. Thank you.\n";
+        }
+        return currentUserLibraryNumber;
+    }
+
+    private String getResultsForOptionR() {
+        String result;
+        String bId = libraryConsole.queryUser("Enter Book Id of the Book to reserve: ");
+        if(biblioteca.reserveBook(bId)){
+            result="Thank You! Enjoy the book.\n";
+        }
+        else
+            result="Sorry we don't have that book yet.\n";
+        return result;
+    }
+
+
 }

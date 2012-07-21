@@ -7,7 +7,7 @@ package com.twu28.biblioteca;
  * Time: 11:48 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Movie{
+public class Movie implements LibraryItem {
 
     private String name;
     private String director;
@@ -27,6 +27,7 @@ public class Movie{
         isRated=false;
     }
 
+    @Override
     public String toString() {
         if(isRated){
             return name+" "+director+" "+rating+"/10";

@@ -19,9 +19,4 @@ public class Console {
         Scanner sc=new Scanner(System.in);
         return(sc.nextLine());
     }
-
-    public void exitApplication() {
-        System.out.println("Goodbye, Visit Again");
-
-    }
 }

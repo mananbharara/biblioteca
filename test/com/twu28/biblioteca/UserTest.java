@@ -20,7 +20,7 @@ public class UserTest {
 
     @Test public void correctUserIdIsReturned() throws Exception{
         User user=new User("111-12345","abcde","customer");
-        assertEquals("111-12345",user.getUserId());
+        assertEquals("111-12345",user.getLibraryNumber());
     }
 
     @Test public void correctRoleIsReturned() throws Exception{

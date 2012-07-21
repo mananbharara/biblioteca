@@ -9,23 +9,23 @@ package com.twu28.biblioteca;
  */
 public class User {
 
-    private String userId;
+    private String libraryNumber;
     private String password;
     private String role;
 
 
-    public User(String id, String pwrd, String uRole) {
-        userId=id;
-        password=pwrd;
-        role=uRole;
+    public User(String userLibraryNumber, String userPassword, String userRole) {
+        libraryNumber =userLibraryNumber;
+        password=userPassword;
+        role=userRole;
         }
 
     public String getPassword() {
         return password;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getLibraryNumber() {
+        return libraryNumber;
     }
 
     public String getRole() {
