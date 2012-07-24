@@ -9,12 +9,12 @@ import java.util.ArrayList;
  * Time: 8:14 PM
  * To change this template use File | Settings | File Templates.
  */
-public class AllMoviesResultBuilder implements ResultBuilder {
+public class MoviesViewer implements Option {
 
 
     public String getResult(String libraryNumber) {
         Library biblioteca=new Library();
-        ArrayList<LibraryItem> movies=biblioteca.getLibraryItems('M');
+        ArrayList<LibraryItem> movies=biblioteca.getAllItems(Movie.class);
         StringBuffer moviesStringBuffer=new StringBuffer("");
         for(LibraryItem b:movies){
             moviesStringBuffer.append(b.toString() + "\n");

@@ -1,6 +1,7 @@
 package com.twu28.biblioteca;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -57,32 +58,19 @@ public class Library {
              return false;
     }
 
-    //To Display a list of all books available with the Library
-    public ArrayList<LibraryItem> getLibraryItems(char entity) {
-        return listBuilder(entity);
-    }
+    //To Display a list of all items available with the Library
 
-    public ArrayList<LibraryItem> listBuilder(char requiredItem){
-        ArrayList<LibraryItem> itemList=new ArrayList<LibraryItem>();
-        switch (requiredItem){
-            case 'B':
-                for (LibraryItem b:libraryItems)
-                {
-                    if(b instanceof Book){
-                        itemList.add(b);
-                    }
-                }
-                break;
-            case 'M':
-                for (LibraryItem m:libraryItems)
-                {
-                    if(m instanceof Movie){
-                        itemList.add(m);
-                    }
-                }
-                break;
+    public <T> ArrayList<LibraryItem> getAllItems(Class<T> cl)
+    {
+
+        ArrayList<LibraryItem> list=new ArrayList<LibraryItem>();
+        for(LibraryItem libraryItem:libraryItems){
+            if(cl.isInstance(libraryItem)){
+                list.add(libraryItem);
+            }
         }
-        return itemList;
+
+        return list;
     }
 
 

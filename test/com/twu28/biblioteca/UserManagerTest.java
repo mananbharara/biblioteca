@@ -14,22 +14,25 @@ import static org.junit.Assert.*;
  * To change this template use File | Settings | File Templates.
  */
 public class UserManagerTest {
-    ArrayList<User> userList;
+    ArrayList<User> users;
 
     public void initializeUserList(){
-
+        users=new ArrayList<User>();
+        users.add(new User("111-11111", "aaaaa", "Librarian"));
+        users.add(new User("111-11112", "aaaab", "Customer"));
     }
 
-    @Test public void userIsCorrectlyValidated() throws Exception{
+
+    @Test public void correctUserIsValidated() throws Exception{
         initializeUserList();
-        assertTrue(new UserManager().validateUser("111-11112", "aaaab"));
+        assertTrue(new UserManager(users).validateUser("111-11112", "aaaab"));
     }
 
-    @Test public void currentUserIsRecorded()throws Exception{
+    @Test public void incorrectUserIsNotLoggedIn() throws Exception{
         initializeUserList();
-        UserManager s=new UserManager();
-        s.validateUser("111-11112", "aaaab");
+        assertFalse(new UserManager(users).validateUser("111-11111","abcds"));
     }
+
 
 
 }

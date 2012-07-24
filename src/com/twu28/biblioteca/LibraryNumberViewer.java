@@ -7,7 +7,7 @@ package com.twu28.biblioteca;
  * Time: 8:16 PM
  * To change this template use File | Settings | File Templates.
  */
-public class LibraryNumberResultBuilder implements ResultBuilder {
+public class LibraryNumberViewer implements Option {
 
 
     public String getResult(String libraryNumber) {

@@ -10,19 +10,17 @@ import java.util.ArrayList;
  * To change this template use File | Settings | File Templates.
  */
 public class UserManager {
-    private ArrayList<User> registeredUsers;
+    private ArrayList<User> users;
 
-    public UserManager(){
-        registeredUsers =new ArrayList<User>();
-        registeredUsers.add(new User("111-11111", "aaaaa", "Librarian"));
-        registeredUsers.add(new User("111-11112", "aaaab", "Customer"));
+    public UserManager(ArrayList<User> registeredUsers){
+        users=registeredUsers;
 
     }
 
     public boolean validateUser(String id, String pass) {
-        for(User u:registeredUsers){
+        for (User u:users){
             if(id.equals(u.getLibraryNumber())&&pass.equals(u.getPassword())){
-                return true;
+            return true;
             }
         }
         return false;

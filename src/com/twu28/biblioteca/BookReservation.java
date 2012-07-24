@@ -7,7 +7,7 @@ package com.twu28.biblioteca;
  * Time: 8:17 PM
  * To change this template use File | Settings | File Templates.
  */
-public class BookReservationResultBuilder implements ResultBuilder {
+public class BookReservation implements Option {
 
 
     @Override

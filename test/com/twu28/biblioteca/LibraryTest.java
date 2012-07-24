@@ -62,12 +62,12 @@ public class LibraryTest {
 
     @Test public void AllBooksAreReturned(){
         initializeBooks();
-        assertEquals(libraryItems.toString(),new Library().getLibraryItems('B').toString());
+        assertEquals(libraryItems.toString(),new Library().getAllItems(Book.class).toString());
     }
 
     @Test public void singleAvailableMovieIsReturned(){
         initializeMovies();
-        assertEquals(libraryItems.toString(), new Library().getLibraryItems('M').toString());
+        assertEquals(libraryItems.toString(), new Library().getAllItems(Movie.class).toString());
  }
 
 

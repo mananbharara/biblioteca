@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class Menu {
 
     private String optionsMenu;
-    private Console libraryConsole;
+    private Console menuConsole;
     String currentUserLibraryNumber;
 
     public Menu(String loggedInUserNumber){
@@ -22,37 +22,35 @@ public class Menu {
                 "Reserve a Book\n" +
                 "Movies-View All\n"+
                 "Check your Library Number\n";
-        libraryConsole=new Console();
+        menuConsole =new Console();
         currentUserLibraryNumber =loggedInUserNumber;
     }
 
     public void startMenu(){
-        libraryConsole.display(optionsMenu);
-        String optionString=libraryConsole.queryUser("Enter your choice(B,R,M or C ):");
+        menuConsole.display(optionsMenu);
+        String optionString= menuConsole.queryUser("Enter your choice(B,R,M or C):");
         displayResultsForOption(optionString.charAt(0));
     }
 
     public void displayResultsForOption(Character optionSelected){
         try{
-            libraryConsole.display(getCorrectResultBuilder(optionSelected).getResult(currentUserLibraryNumber));
+            menuConsole.display(getCorrectResultBuilder(optionSelected).getResult(currentUserLibraryNumber));
         }catch (RuntimeException e){
-            libraryConsole.display(e.getMessage());
+            menuConsole.display(e.getMessage());
         }
     }
 
-    private ResultBuilder getCorrectResultBuilder(Character optionSelected) throws RuntimeException {
+    private Option getCorrectResultBuilder(Character optionSelected) throws RuntimeException {
 
             if(optionSelected!='B'&&optionSelected!='R'&&optionSelected!='M'&&optionSelected!='C')
             {
                 throw new RuntimeException("Select a valid option!!\n");
             }
-
-        ResultBuilder builder;
-        HashMap<Character,ResultBuilder> builders = new HashMap<Character,ResultBuilder>();
-        builders.put('B',new AllBooksResultBuilder());
-        builders.put('R',new BookReservationResultBuilder());
-        builders.put('M',new AllMoviesResultBuilder());
-        builders.put('C',new LibraryNumberResultBuilder());
+        HashMap<Character,Option> builders = new HashMap<Character,Option>();
+        builders.put('B',new BooksViewer());
+        builders.put('R',new BookReservation());
+        builders.put('M',new MoviesViewer());
+        builders.put('C',new LibraryNumberViewer());
 
         return builders.get(optionSelected);
     }
