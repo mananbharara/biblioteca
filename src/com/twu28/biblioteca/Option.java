@@ -9,4 +9,5 @@ package com.twu28.biblioteca;
  */
 public interface Option {
     String getResult(String libraryNumber);
+    String getOptionName();
 }

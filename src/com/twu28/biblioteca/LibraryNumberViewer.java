@@ -10,10 +10,20 @@ package com.twu28.biblioteca;
 public class LibraryNumberViewer implements Option {
 
 
+    private String name;
+
+    public LibraryNumberViewer(){
+        name="Check Library Number";
+    }
+
     public String getResult(String libraryNumber) {
         if(libraryNumber==null){
         return "Please talk to Librarian. Thank you.\n";
         }
         return libraryNumber+"\n";
+    }
+
+    public String getOptionName() {
+        return name;
     }
 }

@@ -1,7 +1,5 @@
 package com.twu28.biblioteca;
 
-import java.util.HashMap;
-
 /**
  * Created with IntelliJ IDEA.
  * User: Manan
@@ -11,49 +9,18 @@ import java.util.HashMap;
  */
 public class Menu {
 
-    private String optionsMenu;
+    private Options options;
     private Console menuConsole;
     String currentUserLibraryNumber;
 
     public Menu(String loggedInUserNumber){
-        optionsMenu="Please choose from the following options: \n" +
-                "\n" +
-                "Books-View All\n" +
-                "Reserve a Book\n" +
-                "Movies-View All\n"+
-                "Check your Library Number\n";
+        options=new Options();
         menuConsole =new Console();
         currentUserLibraryNumber =loggedInUserNumber;
     }
 
     public void startMenu(){
-        menuConsole.display(optionsMenu);
-        String optionString= menuConsole.queryUser("Enter your choice(B,R,M or C):");
-        displayResultsForOption(optionString.charAt(0));
+        String userChoiceString=menuConsole.queryUser("Please choose from the following options: \n" + options.getAllOptions());
+        menuConsole.display(options.getResultsForOptionSelected(userChoiceString.charAt(0), currentUserLibraryNumber));
     }
-
-    public void displayResultsForOption(Character optionSelected){
-        try{
-            menuConsole.display(getCorrectResultBuilder(optionSelected).getResult(currentUserLibraryNumber));
-        }catch (RuntimeException e){
-            menuConsole.display(e.getMessage());
-        }
-    }
-
-    private Option getCorrectResultBuilder(Character optionSelected) throws RuntimeException {
-
-            if(optionSelected!='B'&&optionSelected!='R'&&optionSelected!='M'&&optionSelected!='C')
-            {
-                throw new RuntimeException("Select a valid option!!\n");
-            }
-        HashMap<Character,Option> builders = new HashMap<Character,Option>();
-        builders.put('B',new BooksViewer());
-        builders.put('R',new BookReservation());
-        builders.put('M',new MoviesViewer());
-        builders.put('C',new LibraryNumberViewer());
-
-        return builders.get(optionSelected);
-    }
-
-
 }
