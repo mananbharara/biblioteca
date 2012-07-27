@@ -32,14 +32,14 @@ public class LibraryTest {
         assertFalse(new Library(new ArrayList<LibraryItem>()).reserveBook("AB001"));
     }
 
-    @Test public void AllBooksAreReturned(){
+    @Test public void allBooksAreReturned(){
         ArrayList<LibraryItem>libraryItems=new ArrayList<LibraryItem>();
         libraryItems.add(new Book("SH001", "Sherlock Holmes", "Ser Arthur Conan Doyle", 5));
         libraryItems.add(new Book("B001", "Brida", "Paolo Coelho", 0));
         assertEquals(libraryItems.toString(),new Library(libraryItems).getAllItems(Book.class).toString());
     }
 
-    @Test public void singleAvailableMovieIsReturned(){
+    @Test public void allMoviesAreReturned(){
         ArrayList<LibraryItem> libraryItems =new ArrayList<LibraryItem>();
         libraryItems.add(new Movie("Sholay", "Ramesh Sippy", 8));
         libraryItems.add(new Movie("The Departed", "Martin Scorsese", 9));

@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Time: 8:12 PM
  * To change this template use File | Settings | File Templates.
  */
-public class BooksViewer implements Option {
+public class BooksViewer implements IBooksViewer {
 
     private String name;
     private Library biblioteca;
@@ -41,10 +41,12 @@ public class BooksViewer implements Option {
         biblioteca=new Library(libraryItems);
     }
 
+    @Override
     public String getOptionName() {
         return name;
     }
 
+    @Override
     public String getResult(String libraryNumber) {
         ArrayList<LibraryItem> books=biblioteca.getAllItems(Book.class);
         StringBuffer booksStringBuffer=new StringBuffer("");

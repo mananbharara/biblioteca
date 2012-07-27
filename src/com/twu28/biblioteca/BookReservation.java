@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Time: 8:17 PM
  * To change this template use File | Settings | File Templates.
  */
-public class BookReservation implements Option {
+public class BookReservation implements IBookReservation {
 
     private String name;
     Library biblioteca;
@@ -41,6 +41,7 @@ public class BookReservation implements Option {
         biblioteca=new Library(libraryItems);
     }
 
+    @Override
     public String getOptionName() {
         return name;
     }

@@ -12,10 +12,12 @@ import java.util.ArrayList;
 public class Application {
 
     static ArrayList<User> users;
+    static ArrayList<Option>options;
 
 
     public static void main(String args[]){
         initializeUserList();
+        initializeOptions();
         loginAndCreateMenu();
     }
 
@@ -27,19 +29,27 @@ public class Application {
         Menu menu;
         if(new UserManager(users).validateUser(libraryNumber, password)){
             console.display("Login Successful!\n");
-            menu=new Menu(libraryNumber);
+            menu=new Menu(libraryNumber, options);
         }
         else {
             console.display("Login Failed!\n");
-            menu=new Menu(null);
+            menu=new Menu(null, options);
         }
         menu.startMenu();
     }
 
     public static void initializeUserList(){
         users=new ArrayList<User>();
-        users.add(new User("111-11111", "aaaaa", "Librarian"));
-        users.add(new User("111-11112", "aaaab", "Customer"));
+        users.add(new User("111-11111", "aaaaa"));
+        users.add(new User("111-11112", "aaaab"));
+    }
+
+    public static void initializeOptions(){
+        options=new ArrayList<Option>();
+        options.add(new BooksViewer());
+        options.add(new BookReservation());
+        options.add(new MoviesViewer());
+        options.add(new LibraryNumberViewer());
     }
 
 }

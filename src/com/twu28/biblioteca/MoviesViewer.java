@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Time: 8:14 PM
  * To change this template use File | Settings | File Templates.
  */
-public class MoviesViewer implements Option {
+public class MoviesViewer implements IMoviesViewer {
 
     private String name;
     Library biblioteca;
@@ -41,11 +41,13 @@ public class MoviesViewer implements Option {
         biblioteca=new Library(libraryItems);
     }
 
+    @Override
     public String getOptionName() {
         return name;
     }
 
 
+    @Override
     public String getResult(String libraryNumber) {
         ArrayList<LibraryItem> movies=biblioteca.getAllItems(Movie.class);
         StringBuffer moviesStringBuffer=new StringBuffer("");

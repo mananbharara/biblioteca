@@ -7,7 +7,7 @@ package com.twu28.biblioteca;
  * Time: 8:16 PM
  * To change this template use File | Settings | File Templates.
  */
-public class LibraryNumberViewer implements Option {
+public class LibraryNumberViewer implements ILibraryNumberViewer {
 
 
     private String name;
@@ -16,6 +16,7 @@ public class LibraryNumberViewer implements Option {
         name="Check Library Number";
     }
 
+    @Override
     public String getResult(String libraryNumber) {
         if(libraryNumber==null){
         return "Please talk to Librarian. Thank you.\n";
@@ -23,6 +24,7 @@ public class LibraryNumberViewer implements Option {
         return libraryNumber+"\n";
     }
 
+    @Override
     public String getOptionName() {
         return name;
     }
