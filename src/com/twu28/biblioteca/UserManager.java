@@ -17,9 +17,9 @@ public class UserManager {
 
     }
 
-    public boolean validateUser(String id, String pass) {
+    public boolean validateUser(User currentUser) {
         for (User u:users){
-            if(u.equals(new User(id,pass)))
+            if(u.equals(currentUser))
             {
             return true;
             }

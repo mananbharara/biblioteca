@@ -25,12 +25,12 @@ public class UserManagerTest {
 
     @Test public void correctUserIsValidated() throws Exception{
         initializeUserList();
-        assertTrue(new UserManager(users).validateUser("111-11112", "aaaab"));
+        assertTrue(new UserManager(users).validateUser(new User("111-11111","aaaaa")));
     }
 
     @Test public void incorrectUserIsNotLoggedIn() throws Exception{
         initializeUserList();
-        assertFalse(new UserManager(users).validateUser("111-11111","abcds"));
+        assertFalse(new UserManager(users).validateUser(new User("112-11111","asdfe")));
     }
 
 

@@ -27,7 +27,7 @@ public class Application {
         String libraryNumber=console.queryUser("Enter your Library Number: ");
         String password=console.queryUser("Enter Password: ");
         Menu menu;
-        if(new UserManager(users).validateUser(libraryNumber, password)){
+        if(new UserManager(users).validateUser(new User(libraryNumber, password))){
             console.display("Login Successful!\n");
             menu=new Menu(libraryNumber, options);
         }
