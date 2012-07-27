@@ -11,13 +11,11 @@ public class User {
 
     private String libraryNumber;
     private String password;
-    private String role;
 
 
-    public User(String userLibraryNumber, String userPassword, String userRole) {
+    public User(String userLibraryNumber, String userPassword) {
         libraryNumber =userLibraryNumber;
         password=userPassword;
-        role=userRole;
         }
 
     public String getPassword() {
@@ -28,7 +26,15 @@ public class User {
         return libraryNumber;
     }
 
-    public String getRole() {
-        return role;
+
+    public boolean equals(Object obj){
+        if(obj instanceof User){
+            User user=(User)obj;
+            if(libraryNumber.equals(user.getLibraryNumber())&&password.equals(user.getPassword())){
+                return true;
+            }
+        }
+        return false;
     }
+
 }

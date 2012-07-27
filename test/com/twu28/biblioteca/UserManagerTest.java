@@ -18,8 +18,8 @@ public class UserManagerTest {
 
     public void initializeUserList(){
         users=new ArrayList<User>();
-        users.add(new User("111-11111", "aaaaa", "Librarian"));
-        users.add(new User("111-11112", "aaaab", "Customer"));
+        users.add(new User("111-11111", "aaaaa"));
+        users.add(new User("111-11112", "aaaab"));
     }
 
 

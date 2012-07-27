@@ -19,7 +19,8 @@ public class UserManager {
 
     public boolean validateUser(String id, String pass) {
         for (User u:users){
-            if(id.equals(u.getLibraryNumber())&&pass.equals(u.getPassword())){
+            if(u.equals(new User(id,pass)))
+            {
             return true;
             }
         }
