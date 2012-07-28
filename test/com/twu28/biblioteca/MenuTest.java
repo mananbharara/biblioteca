@@ -70,7 +70,7 @@ public class MenuTest{
         context.assertIsSatisfied();
     }
 
-    @Test public void testLibraryNumberViewCallsIfUserInput4()throws Exception{
+    @Test public void testLibraryNumberViewerCallsIfUserInput4()throws Exception{
         initializeOptions();
         final String libraryNumber="testNumber";
         context.checking(new Expectations(){

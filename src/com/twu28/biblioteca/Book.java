@@ -25,7 +25,7 @@ public class Book implements LibraryItem{
         }
 
     //To check if a book is available
-    boolean isAvailable(){
+    private boolean isAvailable(){
         if(numberOfCopies-numberIssued>0){
             return true;
         }
