@@ -5,6 +5,8 @@ import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.junit.Test;
 
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -24,11 +26,20 @@ public class MenuTest{
     final IBookReservation bookReservation=context.mock(IBookReservation.class);
     final ILibraryNumberViewer libraryNumberViewer=context.mock(ILibraryNumberViewer.class);
     final IMoviesViewer moviesViewer=context.mock(IMoviesViewer.class);
+
     public void initializeOptions(){
         initialOptions.add(booksViewer);
         initialOptions.add(bookReservation);
         initialOptions.add(moviesViewer);
         initialOptions.add(libraryNumberViewer);
+    }
+
+    public PipedOutputStream getMockInputStream() throws Exception{
+        PipedInputStream testInPipe=new PipedInputStream();
+        PipedOutputStream testOutPipe=new PipedOutputStream();
+        testInPipe.connect(testOutPipe);
+        System.setIn(testInPipe);
+        return testOutPipe;
     }
 
     @Test public void libraryNumberIsCorrectlyAssigned(){
@@ -67,17 +78,19 @@ public class MenuTest{
         assertEquals("Select a valid option!!\n",new Menu(null,initialOptions).getResultsForOptionSelected(0));
     }
 
-    /*
-    @Test public void testgetNameCalledOnEveryOption()throws Exception{
+
+    @Test public void testNameGetterCalledOnEveryOption()throws Exception{
         initializeOptions();
+        PipedOutputStream setInput=getMockInputStream();
         context.checking(new Expectations(){{
               for(Option o:initialOptions){
                   oneOf(o).getOptionName();
               }
         }
         });
+        setInput.write("5\n".getBytes());
         new Menu(null,initialOptions).startMenu();
         context.assertIsSatisfied();
     }
-    */
+
 }
