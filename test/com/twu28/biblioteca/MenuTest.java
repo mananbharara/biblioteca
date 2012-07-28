@@ -31,62 +31,26 @@ public class MenuTest{
         initialOptions.add(libraryNumberViewer);
     }
 
-
-
     @Test public void libraryNumberIsCorrectlyAssigned(){
         assertEquals("111-11111",new Menu("111-11111", null).currentUserLibraryNumber);
     }
 
-    @Test public void testBooksViewerCallsIfUserInput1()throws Exception{
+    @Test public void testFirstOptionCallsIfUserChoiceIs1(){
         initializeOptions();
+        final Integer testOption=1;
         context.checking(new Expectations(){
             {
-                oneOf(booksViewer).getResult(null);
+                oneOf(initialOptions.get(testOption-1)).getResult(null);
             }
         });
-        new Menu(null,initialOptions).getResultsForOptionSelected(1);
-        context.assertIsSatisfied();
+        new Menu(null,initialOptions).getResultsForOptionSelected(testOption);
     }
 
-    @Test public void testBookReservationCallsIfUserInput2()throws Exception{
+    @Test public void testThirdOptionCallsIfUserChoiceIs3AndInvalidMessageNotDisplayed()throws Exception{
         initializeOptions();
         context.checking(new Expectations(){
             {
-                oneOf(bookReservation).getResult(null);
-            }
-        });
-        new Menu(null,initialOptions).getResultsForOptionSelected(2);
-        context.assertIsSatisfied();
-    }
-
-    @Test public void testMoviesViewerCallsIfUserInput3()throws Exception{
-        initializeOptions();
-        context.checking(new Expectations(){
-            {
-                oneOf(moviesViewer).getResult(null);
-            }
-        });
-        new Menu(null,initialOptions).getResultsForOptionSelected(3);
-        context.assertIsSatisfied();
-    }
-
-    @Test public void testLibraryNumberViewerCallsIfUserInput4()throws Exception{
-        initializeOptions();
-        final String libraryNumber="testNumber";
-        context.checking(new Expectations(){
-            {
-                oneOf(libraryNumberViewer).getResult(libraryNumber);
-            }
-        });
-        new Menu(libraryNumber,initialOptions).getResultsForOptionSelected(4);
-        context.assertIsSatisfied();
-    }
-
-    @Test public void shouldNotDisplayInvalidMessageIfInputWithinOptionRange()throws Exception{
-        initializeOptions();
-        context.checking(new Expectations(){
-            {
-                oneOf(moviesViewer).getResult(null);
+                oneOf(initialOptions.get(2)).getResult(null);
             }
         });
         assertFalse((new Menu(null,initialOptions).getResultsForOptionSelected(3)).equals("Select a valid option!!\n"));
@@ -97,4 +61,23 @@ public class MenuTest{
         initializeOptions();
         assertEquals("Select a valid option!!\n", new Menu(null, initialOptions).getResultsForOptionSelected(5));
     }
+
+    @Test public void shouldReturnInvalidMessageIfUserChoiceIsLessThan1()throws Exception{
+        initializeOptions();
+        assertEquals("Select a valid option!!\n",new Menu(null,initialOptions).getResultsForOptionSelected(0));
+    }
+
+    /*
+    @Test public void testgetNameCalledOnEveryOption()throws Exception{
+        initializeOptions();
+        context.checking(new Expectations(){{
+              for(Option o:initialOptions){
+                  oneOf(o).getOptionName();
+              }
+        }
+        });
+        new Menu(null,initialOptions).startMenu();
+        context.assertIsSatisfied();
+    }
+    */
 }

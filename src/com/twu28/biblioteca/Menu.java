@@ -31,15 +31,11 @@ public class Menu {
           menuConsole.display(getResultsForOptionSelected(userChoice));
     }
 
-    public String getResultsForOptionSelected(Integer optionSelected)throws ArrayIndexOutOfBoundsException{
-          try{
-            if(optionSelected<0||optionSelected>options.size()){
-                throw new ArrayIndexOutOfBoundsException("Select a valid option!!\n");
-            }
-          }catch (ArrayIndexOutOfBoundsException e){
-                return "Select a valid option!!\n";
-          }
-            return ((options.get(optionSelected-1).getResult(currentUserLibraryNumber)));
+    public String getResultsForOptionSelected(Integer optionSelected){
 
+            if(optionSelected<1||optionSelected>options.size()){
+                return "Select a valid option!!\n";
+            }
+            return ((options.get(optionSelected-1).getResult(currentUserLibraryNumber)));
     }
 }
